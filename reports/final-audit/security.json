@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "text_files_scanned": 87,
+  "trace_text_cells_scanned": 1715,
+  "git_history": [
+    {
+      "repository": ".",
+      "commits_scanned": 0
+    },
+    {
+      "repository": "reports\\final-audit\\release",
+      "commits_scanned": 1
+    }
+  ],
+  "shell_history": "SCANNED",
+  "findings_paths_only": [],
+  "limitation": "Pattern-based audit; chat/tool history cannot be erased or independently inspected. Rotation is user-attested."
+}

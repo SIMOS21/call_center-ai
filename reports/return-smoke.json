@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "order_id": "order_01M76FXF3CQBMTZ81FGHD5N638",
+  "return_id": "return_01M76G6DA7M4AJZ0J9YBNEA44Z",
+  "return_status": "requested",
+  "financial_refund": false,
+  "receive_now": false,
+  "repeat_confirmation_status": 409,
+  "foreign_confirmation_status": 404,
+  "direct_return_denials": [
+    401,
+    403
+  ],
+  "receive_now_denial": 400,
+  "duplicate_eligibility_denied": true,
+  "admin_persistence_verified": true
+}

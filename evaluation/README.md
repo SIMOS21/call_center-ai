@@ -1,0 +1,2 @@
+﻿# Annotation de récupération
+12 requêtes rédigées et annotées par l’agent après inspection des sous-flux réels de guidelines.json. Ces annotations n’ont PAS été revues par un humain. Ce petit jeu de développement mesure une correspondance de sous-flux, pas la fidélité des réponses ni un test indépendant. Les dialogues ABCD restent séparés. Les intitulés et URLs attendus proviennent des consignes téléchargées. Une revue humaine est encore requise avant toute prétention à une mesure universitaire définitive.

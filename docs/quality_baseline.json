@@ -1,0 +1,13 @@
+{
+  "justification": "Observed development baseline, 12 agent-annotated cases. Zero recall regression permitted on this fixed corpus. Not human-validated or an end-to-end success criterion.",
+  "checks": {
+    "retrieval.recall_at_5": {
+      "baseline": 0.6666666666666666,
+      "max_drop": 0
+    },
+    "retrieval.n_annotated": {
+      "baseline": 12,
+      "max_drop": 0
+    }
+  }
+}

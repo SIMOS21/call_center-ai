@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-11-11T23:24:57.926175+00:00",
+  "retrieval": {
+    "status": "NOT_EVALUATED",
+    "reason": "No manually annotated gold sources provided"
+  },
+  "agent": {
+    "status": "NOT_EVALUATED",
+    "reason": "Use --agent after ABCD download and LLM setup"
+  }
+}

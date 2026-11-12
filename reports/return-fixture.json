@@ -1,0 +1,12 @@
+{
+  "order_id": "order_01M76FXF3CQBMTZ81FGHD5N638",
+  "items": [
+    {
+      "id": "ordli_01M76FXF3EHRR2RYB9HRBTHHWS",
+      "quantity": 1
+    }
+  ],
+  "shipping_option_id": "so_01M76G3K6ADS6HGRV4PKQQVA7K",
+  "location_id": "sloc_01M76EEFKKYXM0896VA9QZ2XNB",
+  "fulfillment_id": "ful_01M76G3JW7JB9AG332H6FFRBAR"
+}

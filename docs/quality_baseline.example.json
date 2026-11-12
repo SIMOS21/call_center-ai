@@ -1,0 +1,7 @@
+{
+  "note": "Exemple de structure uniquement. Remplacer les null par vos mesures baseline réelles après évaluation. Ne pas inventer les seuils.",
+  "checks": {
+    "retrieval.recall_at_5": {"baseline": null, "max_drop": 0.05},
+    "agent.tool_selection_proxy_accuracy": {"baseline": null, "max_drop": 0.05}
+  }
+}

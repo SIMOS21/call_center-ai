@@ -1,0 +1,11 @@
+{
+  "tool_calls": 35,
+  "tool_latency_mean_ms": 1678.06,
+  "tool_errors": 3,
+  "http_requests": 42,
+  "http_errors": 5,
+  "http_latency_mean_ms": 2343.42,
+  "http_latency_p95_ms": 7624.864800018258,
+  "tool_success_rate": 0.9142857142857143,
+  "tool_latency_p95_ms": 5068.854599958286
+}

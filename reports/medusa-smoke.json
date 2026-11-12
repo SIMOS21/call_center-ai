@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "backend": "Medusa 2.22.6 real local",
+  "products": 4,
+  "customers": [
+    "cus_01M76EP2SQK3RF8XE8MJKVSJES",
+    "cus_01M76EP30T66B9GX50QG14WQW7"
+  ],
+  "cart_id": "cart_01M76EPC5XT1F3HJH98C6NKGMQ",
+  "order_id": "order_01M76EPFXQEJ8VPAC3N5TCSJ6R",
+  "order_status": "pending",
+  "payment_provider": "pp_system_default",
+  "financial_payment": false,
+  "direct_return_denials": [
+    401,
+    403
+  ],
+  "foreign_checkout_status": 403,
+  "approval_once": true,
+  "ticket_id": "tic_244d866e86d24563"
+}

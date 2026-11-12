@@ -1,0 +1,7 @@
+{
+  "dataset_sha256": "fb6751a87e41dccb03b60f0c0b0ce0a8e87170d94261443a845763073f7371b7",
+  "reviewer": null,
+  "reviewed_at": null,
+  "approved": false,
+  "instructions": "Human must review all expected labels, documentary excerpts and authorization behavior before independent evaluation."
+}

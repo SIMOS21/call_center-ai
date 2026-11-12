@@ -1,0 +1,41 @@
+{
+  "api": {
+    "status_code": 200,
+    "body": "{\"api\":\"ok\",\"medusa_reachable\":true,\"index_available\":true,\"llm_configured\":true}"
+  },
+  "ui": {
+    "status_code": 200,
+    "body": "ok"
+  },
+  "medusa": {
+    "status_code": 200,
+    "body": "OK"
+  },
+  "mlflow": {
+    "status_code": 200,
+    "body": "OK"
+  },
+  "return stained product": {
+    "status_code": 200,
+    "results": 4,
+    "sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Stain",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Size",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+    ]
+  },
+  "Je souhaite un retour pour une mauvaise couleur": {
+    "status_code": 200,
+    "results": 1,
+    "sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+    ]
+  },
+  "astrophysics quasar gravitational": {
+    "status_code": 200,
+    "results": 0,
+    "sources": []
+  },
+  "readiness": "READY"
+}

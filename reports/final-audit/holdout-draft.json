@@ -1,0 +1,141 @@
+{
+  "dataset_sha256": "fb6751a87e41dccb03b60f0c0b0ce0a8e87170d94261443a845763073f7371b7",
+  "cases": 16,
+  "status": "DRAFT_NOT_HUMAN_REVIEWED",
+  "independent_validated": false,
+  "retrieval": [
+    {
+      "backend": "lexical",
+      "n": 5,
+      "recall_at_5": 0.2,
+      "mean_ms": 1.014960021711886,
+      "p95_ms": 1.0327000636607409,
+      "cases": [
+        {
+          "case_id": "H01",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Username",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item"
+          ]
+        },
+        {
+          "case_id": "H02",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Invalid Credit Card",
+          "sources": []
+        },
+        {
+          "case_id": "H03",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Reset Two-Factor Auth",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Status Service Removed",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Status Service Added"
+          ]
+        },
+        {
+          "case_id": "H04",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Manage Dispute Bill"
+          ]
+        },
+        {
+          "case_id": "H05",
+          "hit": true,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Phone",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Phone",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Manage Extension"
+          ]
+        }
+      ]
+    },
+    {
+      "backend": "chroma",
+      "n": 5,
+      "recall_at_5": 0.4,
+      "mean_ms": 24.526280001737177,
+      "p95_ms": 26.190700009465218,
+      "cases": [
+        {
+          "case_id": "H01",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Username",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Shipping Status",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Amount",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Initiate Refund",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Mistimed Billing Already Returned"
+          ]
+        },
+        {
+          "case_id": "H02",
+          "hit": true,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Invalid Credit Card",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Invalid Credit Card",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Quantity",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Payment Method",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Initiate Refund",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Status Credit Missing"
+          ]
+        },
+        {
+          "case_id": "H03",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Downgrade",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Quantity",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Quantity",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Shipping Cost",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Upgrade"
+          ]
+        },
+        {
+          "case_id": "H04",
+          "hit": false,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Upgrade",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Mistimed Billing Already Returned",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Manage Pay Bill",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Active",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Upgrade"
+          ]
+        },
+        {
+          "case_id": "H05",
+          "hit": true,
+          "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Phone",
+          "sources": [
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Address",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Name",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Phone",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Address",
+            "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Phone"
+          ]
+        }
+      ]
+    }
+  ],
+  "agent": {
+    "status": "NOT_EVALUATED",
+    "n": 0,
+    "reason": "Rotation and human-reviewed labels required"
+  },
+  "task_success": {
+    "status": "NOT_EVALUATED",
+    "n": 0
+  },
+  "citation_faithfulness": {
+    "status": "HUMAN_REVIEW_REQUIRED",
+    "n": 0
+  }
+}

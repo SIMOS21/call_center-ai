@@ -1,0 +1,9 @@
+{
+  "trace_id": "tr-aab3191ea6ce73fd30380a6330a5c734",
+  "persisted": true,
+  "spans": [
+    "tool.search_products",
+    "tool.medusa.GET.products"
+  ],
+  "results_found": null
+}

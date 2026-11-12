@@ -1,0 +1,12 @@
+{
+  "request_id": "c30c0dc7860344d5948b80559e7a6dc2",
+  "answer": "Voici les produits actuellement dans le catalogue (stock non vérifié) :\n\n1. **Medusa Sweatpants** – variantes : S, M, L, XL  \n2. **Medusa Sweatshirt** – variantes : S, M, L, XL  \n3. **Medusa Shorts** – variantes : S, M, L, XL  \n4. **Medusa T-Shirt** – variantes : S / Black, S / White, M / White, L / White, L / Black, M / Black, XL / Black, XL / White  \n\n*Aucune information de stock en temps réel n'est fournie par l'outil ; la présence d'une variante dans le catalogue ne prouve pas sa disponibilité.*",
+  "tool_calls": 1,
+  "used_tools": [
+    "search_products"
+  ],
+  "latency_ms": 10817,
+  "source_checked": false,
+  "pending_actions": [],
+  "escalation_recommended": false
+}

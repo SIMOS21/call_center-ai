@@ -1,0 +1,12 @@
+﻿{"question":"My shirt arrived with a stain. How do I return the stained product?","flow":"Product Defect","subflow":"Return Due to Stain"}
+{"question":"Can I return the wrong color?","flow":"Product Defect","subflow":"Return Due to Color"}
+{"question":"I need to return this because the size is wrong","flow":"Product Defect","subflow":"Return Due to Size"}
+{"question":"I forgot my password, how can I recover it?","flow":"Account Access","subflow":"Recover Password"}
+{"question":"I want to cancel my order","flow":"Order Issue","subflow":"Manage Cancel"}
+{"question":"The website is too slow","flow":"Troubleshoot Site","subflow":"Website Too Slow"}
+{"question":"How can I change my account address?","flow":"Manage Account","subflow":"Manage Change Address"}
+{"question":"How do I update my payment method?","flow":"Manage Account","subflow":"Manage Payment Method"}
+{"question":"Je souhaite un retour pour une mauvaise couleur","flow":"Product Defect","subflow":"Return Due to Color"}
+{"question":"Comment annuler ma commande ?","flow":"Order Issue","subflow":"Manage Cancel"}
+{"question":"Mon mot de passe est perdu","flow":"Account Access","subflow":"Recover Password"}
+{"question":"Le site est lent","flow":"Troubleshoot Site","subflow":"Website Too Slow"}

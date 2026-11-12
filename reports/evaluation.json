@@ -1,0 +1,290 @@
+{
+  "created_at": "2026-11-11T23:26:15.437220+00:00",
+  "annotation": "agent_reviewed_not_human_validated",
+  "n": 12,
+  "cases_sha256": "e5f9b3685c369911044bf8dfc5bab5a4bedebd1a5c82faec06b49387f3b749df",
+  "configurations": [
+    {
+      "chunk_words": 90,
+      "overlap_words": 20,
+      "documents": 55,
+      "chunks": 205,
+      "path": "data\\benchmark-90.json",
+      "recall_at_5": 0.6666666666666666,
+      "n_annotated": 12,
+      "mean_retrieval_ms": 1.3872083315315347,
+      "p95_retrieval_ms": 2.070999937132001,
+      "mlflow_run_id": "1a2536dad3c14a4083f356ec495da273"
+    },
+    {
+      "chunk_words": 180,
+      "overlap_words": 35,
+      "documents": 55,
+      "chunks": 120,
+      "path": "data\\benchmark-180.json",
+      "recall_at_5": 0.5,
+      "n_annotated": 12,
+      "mean_retrieval_ms": 1.1314166670975585,
+      "p95_retrieval_ms": 1.3026000233367085,
+      "mlflow_run_id": "83c9cfe305354e2cb0b82fa4c145f286"
+    }
+  ],
+  "selected_chunk_words": 90,
+  "retrieval": {
+    "recall_at_5": 0.6666666666666666,
+    "n_annotated": 12,
+    "mean_retrieval_ms": 1.3872083315315347,
+    "p95_retrieval_ms": 2.070999937132001
+  },
+  "agent": {
+    "n_scenarios": 6,
+    "tool_selection_accuracy": 1.0,
+    "mean_tool_calls": 1.0,
+    "mean_latency_ms": 4285.3244333722005,
+    "status": "EVALUATED_GUIDED_DEVELOPMENT",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "limitation": "Six guided development scenarios on generated test data. No independent test-set claim. Authorized return and token/cost metrics not evaluated."
+  },
+  "agent_live": {
+    "created_at": "2026-11-11T23:42:05.830867+00:00",
+    "provider": "NVIDIA",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cases": [
+      {
+        "scenario": "rag",
+        "expected_tool": "search_knowledge",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "tool_calls": 1,
+        "request_id": "9900da5bf7fc4f5b9c7e43224dfd6d73",
+        "answer": "**Source ABCD retrouvée**  \n- Titre : *ABCD: Product Defect / Return Due to Color*  \n- URL : https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product+Defect&subflow=Return+Due+to+Color  \n\n**Distinction par rapport aux règles de notre boutique Medusa**  \n- Le document ABCD décrit une procédure **type** (vérifier le compte, valider l’achat, etc.) ; il ne s’applique **pas automatiquement** à notre boutique.  \n- Nos règles de retour sont celles configurées dans **Medusa Admin** ; toute opération de retour doit être lancée via l’outil `request_return` en fournissant les IDs réels de la commande, des articles, des options d’expédition et des entrepôts.  \n- En cas de doute, je consulte d’abord `search_knowledge` ; si aucune source fiable ne correspond, je signale l’absence de directive et propose de créer un ticket support.",
+        "latency_ms": 6836.224100086838,
+        "selection_correct": true,
+        "escalation": false
+      },
+      {
+        "scenario": "catalogue",
+        "expected_tool": "search_products",
+        "used_tools": [
+          "search_products"
+        ],
+        "tool_calls": 1,
+        "request_id": "691795c9fce04b779d553b5704bbdab0",
+        "answer": "Voici les produits actuellement disponibles dans notre boutique (catalogue réel) :\n\n1. **Medusa Sweatpants** – Disponible en S, M, L, XL\n2. **Medusa Sweatshirt** – Disponible en S, M, L, XL\n3. **Medusa Shorts** – Disponible en S, M, L, XL\n4. **Medusa T-Shirt** – Disponible en plusieurs combinaisons (S/M/L en noir/blanc)\n\nChaque fiche produit indique les variantes (taille et couleur) en stock. Si vous souhaitez vérifier la disponibilité d'une taille précise ou passer une commande, indiquez-moi le produit et la variante désirée.",
+        "latency_ms": 4356.333600007929,
+        "selection_correct": true,
+        "escalation": false
+      },
+      {
+        "scenario": "suivi",
+        "expected_tool": "get_order_status",
+        "used_tools": [
+          "get_order_status"
+        ],
+        "tool_calls": 1,
+        "request_id": "58f0aa5685c44af2840b4bae4d31b844",
+        "answer": "Voici le statut de votre commande **order_01M76EPFXQEJ8VPAC3N5TCSJ6R** :\n\n- **Statut** : pending\n- **Statut de fulfillment** : not_fulfilled\n- **Statut de paiement** : authorized\n\nLa commande est en attente et n'a pas encore été expédiée. Le paiement a été autorisé.",
+        "latency_ms": 6067.547200014815,
+        "selection_correct": true,
+        "escalation": false
+      },
+      {
+        "scenario": "panier",
+        "expected_tool": "prepare_cart",
+        "used_tools": [
+          "prepare_cart"
+        ],
+        "tool_calls": 1,
+        "request_id": "7da7f97a4cb347afa377bf22a6cb6473",
+        "answer": "Confirmation explicite requise : prepare_cart (appr_d98d6d46a43a41eeb5140b3c1bfaeb53)",
+        "latency_ms": 1536.9147000601515,
+        "selection_correct": true,
+        "escalation": false
+      },
+      {
+        "scenario": "checkout",
+        "expected_tool": "request_checkout",
+        "used_tools": [
+          "request_checkout"
+        ],
+        "tool_calls": 1,
+        "request_id": "cc21e6d6330e4d60aaac307bd417d9a8",
+        "answer": "Confirmation explicite requise : complete_cart (appr_680fcb60362c492f85b777c69745fe4c)",
+        "latency_ms": 2568.6345000285655,
+        "selection_correct": true,
+        "escalation": false
+      },
+      {
+        "scenario": "ticket",
+        "expected_tool": "create_ticket",
+        "used_tools": [
+          "create_ticket"
+        ],
+        "tool_calls": 1,
+        "request_id": "6e233091da724608b990e6c83c9e5848",
+        "answer": "✅ Ticket créé avec succès.\n\n- **Ticket ID** : `tic_3978bcb2c83041ae`\n- **Catégorie** : delivery\n- **Description** : demande de suivi de démonstration technique de la boutique locale\n- **Commande associée** : `order_01M76FXF3CQBMTZ81FGHD5N638`\n- **Statut** : open\n\nLe ticket a été enregistré dans notre base de données. Un agent traitera votre demande de suivi.",
+        "latency_ms": 4346.292500034906,
+        "selection_correct": true,
+        "escalation": false
+      }
+    ],
+    "confirmed_cart_id": "cart_01M76FVHDYEGH0PJ12AB2D4DZB",
+    "repeat_confirmation_status": 409,
+    "metrics": {
+      "n_scenarios": 6,
+      "tool_selection_accuracy": 1.0,
+      "mean_tool_calls": 1.0,
+      "mean_latency_ms": 4285.3244333722005
+    },
+    "limitation": "Six guided development scenarios on generated test data. No independent test-set claim. Authorized return and token/cost metrics not evaluated.",
+    "mlflow_run_id": "fea7d7c9b1914b7d9d72e39eec11de9b",
+    "agent_order_id": "order_01M76FXF3CQBMTZ81FGHD5N638",
+    "agent_order_status": "pending",
+    "ticket_persisted": true,
+    "financial_payment": false,
+    "vertical_mlflow_run_id": "bc1c689966054f559d4c59d4f08d1a00"
+  },
+  "dense": {
+    "backend": "chroma",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "annotation": "agent_reviewed_not_human_validated",
+    "metrics": {
+      "recall_at_5": 0.5,
+      "n_annotated": 12,
+      "mean_retrieval_ms": 23.753575000834342,
+      "p95_retrieval_ms": 30.151700018905103,
+      "unknown_results": 0
+    },
+    "predictions": [
+      {
+        "question": "My shirt arrived with a stain. How do I return the stained product?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Stain",
+        "hit_at_5": false,
+        "sources": []
+      },
+      {
+        "question": "Can I return the wrong color?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+        ]
+      },
+      {
+        "question": "I need to return this because the size is wrong",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Size",
+        "hit_at_5": false,
+        "sources": []
+      },
+      {
+        "question": "I forgot my password, how can I recover it?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+        "hit_at_5": false,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Reset Two-Factor Auth",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Amount",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Update Refund",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Stain"
+        ]
+      },
+      {
+        "question": "I want to cancel my order",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Cancel",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Downgrade",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Upgrade",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Quantity",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Cancel",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Shipping Status"
+        ]
+      },
+      {
+        "question": "The website is too slow",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Promo Code Out of Date",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Promo Code Invalid"
+        ]
+      },
+      {
+        "question": "How can I change my account address?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Address",
+        "hit_at_5": false,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Amount",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Manage Shipping",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Active",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Name"
+        ]
+      },
+      {
+        "question": "How do I update my payment method?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Payment Method",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Refund Status",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Payment Method"
+        ]
+      },
+      {
+        "question": "Je souhaite un retour pour une mauvaise couleur",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+        ]
+      },
+      {
+        "question": "Comment annuler ma commande ?",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Cancel",
+        "hit_at_5": false,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Downgrade",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Cart Not Updating",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Manage Extension",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Downgrade",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Mystery Fee"
+        ]
+      },
+      {
+        "question": "Mon mot de passe est perdu",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+        "hit_at_5": false,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Reset Two-Factor Auth",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Address",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Name",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Amount",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Subscription Inquiry&subflow=Status Due Date"
+        ]
+      },
+      {
+        "question": "Le site est lent",
+        "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+        "hit_at_5": true,
+        "sources": [
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+          "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Promo Code Out of Date"
+        ]
+      }
+    ],
+    "distance": "cosine",
+    "min_score": 0.3,
+    "mlflow_run_id": "1be27d02063a4c0e9f52a455b5fd789e"
+  }
+}

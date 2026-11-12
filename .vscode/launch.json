@@ -1,0 +1,7 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "CommerceOps API", "type": "debugpy", "request": "launch", "module": "uvicorn", "args": ["app.api:api", "--host", "127.0.0.1", "--port", "8001"], "cwd": "${workspaceFolder}", "envFile": "${workspaceFolder}/.env"},
+    {"name": "CommerceOps UI", "type": "debugpy", "request": "launch", "module": "streamlit", "args": ["run", "app/ui.py", "--server.port", "8501"], "cwd": "${workspaceFolder}"}
+  ]
+}

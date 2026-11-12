@@ -1,0 +1,17 @@
+{
+  "source": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "role": "read_only_historical",
+  "rows_read": 99441,
+  "rows_inserted": 0,
+  "rows_persisted": 99441,
+  "columns": [
+    "order_id",
+    "customer_id",
+    "order_status",
+    "order_purchase_timestamp",
+    "order_approved_at",
+    "order_delivered_carrier_date",
+    "order_delivered_customer_date",
+    "order_estimated_delivery_date"
+  ]
+}

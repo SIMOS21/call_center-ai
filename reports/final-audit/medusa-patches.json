@@ -1,0 +1,18 @@
+[
+  {
+    "file": "commerceops-ownership.ts",
+    "matches_installed": true
+  },
+  {
+    "file": "configure-agent.ts",
+    "matches_installed": true
+  },
+  {
+    "file": "middlewares.ts",
+    "matches_installed": true
+  },
+  {
+    "file": "prepare-return-demo.ts",
+    "matches_installed": true
+  }
+]

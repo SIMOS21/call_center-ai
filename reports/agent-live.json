@@ -1,0 +1,100 @@
+{
+  "created_at": "2026-11-11T23:42:05.830867+00:00",
+  "provider": "NVIDIA",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "cases": [
+    {
+      "scenario": "rag",
+      "expected_tool": "search_knowledge",
+      "used_tools": [
+        "search_knowledge"
+      ],
+      "tool_calls": 1,
+      "request_id": "9900da5bf7fc4f5b9c7e43224dfd6d73",
+      "answer": "**Source ABCD retrouvée**  \n- Titre : *ABCD: Product Defect / Return Due to Color*  \n- URL : https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product+Defect&subflow=Return+Due+to+Color  \n\n**Distinction par rapport aux règles de notre boutique Medusa**  \n- Le document ABCD décrit une procédure **type** (vérifier le compte, valider l’achat, etc.) ; il ne s’applique **pas automatiquement** à notre boutique.  \n- Nos règles de retour sont celles configurées dans **Medusa Admin** ; toute opération de retour doit être lancée via l’outil `request_return` en fournissant les IDs réels de la commande, des articles, des options d’expédition et des entrepôts.  \n- En cas de doute, je consulte d’abord `search_knowledge` ; si aucune source fiable ne correspond, je signale l’absence de directive et propose de créer un ticket support.",
+      "latency_ms": 6836.224100086838,
+      "selection_correct": true,
+      "escalation": false
+    },
+    {
+      "scenario": "catalogue",
+      "expected_tool": "search_products",
+      "used_tools": [
+        "search_products"
+      ],
+      "tool_calls": 1,
+      "request_id": "691795c9fce04b779d553b5704bbdab0",
+      "answer": "Voici les produits actuellement disponibles dans notre boutique (catalogue réel) :\n\n1. **Medusa Sweatpants** – Disponible en S, M, L, XL\n2. **Medusa Sweatshirt** – Disponible en S, M, L, XL\n3. **Medusa Shorts** – Disponible en S, M, L, XL\n4. **Medusa T-Shirt** – Disponible en plusieurs combinaisons (S/M/L en noir/blanc)\n\nChaque fiche produit indique les variantes (taille et couleur) en stock. Si vous souhaitez vérifier la disponibilité d'une taille précise ou passer une commande, indiquez-moi le produit et la variante désirée.",
+      "latency_ms": 4356.333600007929,
+      "selection_correct": true,
+      "escalation": false
+    },
+    {
+      "scenario": "suivi",
+      "expected_tool": "get_order_status",
+      "used_tools": [
+        "get_order_status"
+      ],
+      "tool_calls": 1,
+      "request_id": "58f0aa5685c44af2840b4bae4d31b844",
+      "answer": "Voici le statut de votre commande **order_01M76EPFXQEJ8VPAC3N5TCSJ6R** :\n\n- **Statut** : pending\n- **Statut de fulfillment** : not_fulfilled\n- **Statut de paiement** : authorized\n\nLa commande est en attente et n'a pas encore été expédiée. Le paiement a été autorisé.",
+      "latency_ms": 6067.547200014815,
+      "selection_correct": true,
+      "escalation": false
+    },
+    {
+      "scenario": "panier",
+      "expected_tool": "prepare_cart",
+      "used_tools": [
+        "prepare_cart"
+      ],
+      "tool_calls": 1,
+      "request_id": "7da7f97a4cb347afa377bf22a6cb6473",
+      "answer": "Confirmation explicite requise : prepare_cart (appr_d98d6d46a43a41eeb5140b3c1bfaeb53)",
+      "latency_ms": 1536.9147000601515,
+      "selection_correct": true,
+      "escalation": false
+    },
+    {
+      "scenario": "checkout",
+      "expected_tool": "request_checkout",
+      "used_tools": [
+        "request_checkout"
+      ],
+      "tool_calls": 1,
+      "request_id": "cc21e6d6330e4d60aaac307bd417d9a8",
+      "answer": "Confirmation explicite requise : complete_cart (appr_680fcb60362c492f85b777c69745fe4c)",
+      "latency_ms": 2568.6345000285655,
+      "selection_correct": true,
+      "escalation": false
+    },
+    {
+      "scenario": "ticket",
+      "expected_tool": "create_ticket",
+      "used_tools": [
+        "create_ticket"
+      ],
+      "tool_calls": 1,
+      "request_id": "6e233091da724608b990e6c83c9e5848",
+      "answer": "✅ Ticket créé avec succès.\n\n- **Ticket ID** : `tic_3978bcb2c83041ae`\n- **Catégorie** : delivery\n- **Description** : demande de suivi de démonstration technique de la boutique locale\n- **Commande associée** : `order_01M76FXF3CQBMTZ81FGHD5N638`\n- **Statut** : open\n\nLe ticket a été enregistré dans notre base de données. Un agent traitera votre demande de suivi.",
+      "latency_ms": 4346.292500034906,
+      "selection_correct": true,
+      "escalation": false
+    }
+  ],
+  "confirmed_cart_id": "cart_01M76FVHDYEGH0PJ12AB2D4DZB",
+  "repeat_confirmation_status": 409,
+  "metrics": {
+    "n_scenarios": 6,
+    "tool_selection_accuracy": 1.0,
+    "mean_tool_calls": 1.0,
+    "mean_latency_ms": 4285.3244333722005
+  },
+  "limitation": "Six guided development scenarios on generated test data. No independent test-set claim. Authorized return and token/cost metrics not evaluated.",
+  "mlflow_run_id": "fea7d7c9b1914b7d9d72e39eec11de9b",
+  "agent_order_id": "order_01M76FXF3CQBMTZ81FGHD5N638",
+  "agent_order_status": "pending",
+  "ticket_persisted": true,
+  "financial_payment": false,
+  "vertical_mlflow_run_id": "bc1c689966054f559d4c59d4f08d1a00"
+}

@@ -1,0 +1,9 @@
+{
+  "documents": 55,
+  "chunks": 205,
+  "path": "C:\\Users\\ULTRA PC\\OneDrive\\Documents\\Projects\\commerceops_ai_starter_real_sources\\commerceops_ai\\data\\index.json",
+  "backend": "chroma",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "distance": "cosine"
+}

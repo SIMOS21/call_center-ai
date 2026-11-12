@@ -1,0 +1,101 @@
+[
+  {
+    "question": "My shirt arrived with a stain. How do I return the stained product?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Stain",
+    "hit_at_5": false,
+    "retrieved_sources": []
+  },
+  {
+    "question": "Can I return the wrong color?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+    "hit_at_5": false,
+    "retrieved_sources": []
+  },
+  {
+    "question": "I need to return this because the size is wrong",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Size",
+    "hit_at_5": false,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Purchase Dispute&subflow=Promo Code Invalid"
+    ]
+  },
+  {
+    "question": "I forgot my password, how can I recover it?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password"
+    ]
+  },
+  {
+    "question": "I want to cancel my order",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Cancel",
+    "hit_at_5": false,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Manage Shipping"
+    ]
+  },
+  {
+    "question": "The website is too slow",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow"
+    ]
+  },
+  {
+    "question": "How can I change my account address?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Address",
+    "hit_at_5": false,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Downgrade",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Manage Shipping",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Shipping Status"
+    ]
+  },
+  {
+    "question": "How do I update my payment method?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Payment Method",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Status Payment Method",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Payment Method",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Refund Status",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Refund Status"
+    ]
+  },
+  {
+    "question": "Je souhaite un retour pour une mauvaise couleur",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+    ]
+  },
+  {
+    "question": "Comment annuler ma commande ?",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Order Issue&subflow=Manage Cancel",
+    "hit_at_5": false,
+    "retrieved_sources": []
+  },
+  {
+    "question": "Mon mot de passe est perdu",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Password",
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Manage Account&subflow=Manage Change Name"
+    ]
+  },
+  {
+    "question": "Le site est lent",
+    "expected_source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow",
+    "hit_at_5": true,
+    "retrieved_sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Website Too Slow"
+    ]
+  }
+]

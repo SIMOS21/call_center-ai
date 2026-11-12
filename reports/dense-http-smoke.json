@@ -1,0 +1,20 @@
+{
+  "backend": "chroma",
+  "temporary_api_port": 8002,
+  "health": {
+    "api": "ok",
+    "medusa_reachable": true,
+    "index_available": true,
+    "llm_configured": true
+  },
+  "retour mauvaise couleur": {
+    "results": 1,
+    "sources": [
+      "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color"
+    ]
+  },
+  "astrophysics quasar gravitational": {
+    "results": 0,
+    "sources": []
+  }
+}
