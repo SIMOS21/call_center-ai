@@ -13,7 +13,7 @@
 | P0.3 Jeu inédit | PARTIAL | 16 cas distincts gelés, copie `data/evaluation/manual_gold.jsonl`, SHA et brouillon mesuré dans `reports/final-audit/holdout-draft.json` |
 | Revue humaine et fidélité | BLOCKED | `evaluation/manual_gold.review.json` non approuvé ; « vas-y » n'atteste pas une revue des annotations |
 | Évaluation indépendante agent/tâche | BLOCKED | n=0 : aucune performance indépendante revendiquée ; transactions historiques non rejouées |
-| P0.4 GitHub | IN_PROGRESS | Dépôt autorisé : https://github.com/SIMOS21/call_center-ai ; historique initial conservé, publication après scans |
+| P0.4 GitHub | COMPLETE | Commit `75ed8e7ddbd2133060b92eab179b3e18c6174077` publié sans secrets/datasets ; [run Actions 43143323117 réussi](https://github.com/SIMOS21/call_center-ai/actions/runs/43143323117), preuve `reports/final-audit/github-ci.json` |
 | P0.5 Rapport PDF | COMPLETE pour pagination, PARTIAL pour captures | `output/pdf/CommerceOps_AI_Rapport_Final.pdf` : 10 pages, contrôle visuel ; architecture et tableau RAG inclus, captures Admin/CI absentes |
 | Vidéo réelle 2 minutes | BLOCKED_MANUAL | Accès navigateur automatisé indisponible ; aucune vidéo ni capture synthétique fabriquée |
 | P0.6 Terminologie/UTF-8 | COMPLETE pour le statut courant | Ancien statut archivé dans les preuves ; ce statut est réécrit en UTF-8 sans accents remplacés |
@@ -29,7 +29,7 @@
 
 1. Revoir individuellement les 16 annotations et leurs sources/extraits ; inscrire identité/date/SHA et corrections dans `evaluation/manual_gold.review.json` avant exécution indépendante supervisée. Les cas transactionnels exigent de nouvelles fixtures de test pour ne pas réutiliser un article déjà retourné.
 2. Enregistrer une vraie vidéo de deux minutes et les captures Admin/MLflow/CI sans clés ni données privées. Le poste affichait un éditeur `.env` : aucune capture globale non contrôlée n'a été réalisée.
-3. Publication et CI : autorisation explicite reçue ; voir le résultat final archivé avant de conclure à une CI distante réussie.
+3. Publication et CI : effectuées avec succès sur le commit ci-dessus. Les mises à jour documentaires ultérieures peuvent déclencher un nouveau run ; ne pas confondre leurs SHA.
 
 ## Limites maintenues
 

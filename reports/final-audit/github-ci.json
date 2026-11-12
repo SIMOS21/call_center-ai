@@ -1,0 +1,12 @@
+{
+  "commit": "75ed8e7ddbd2133060b92eab179b3e18c6174077",
+  "runs": [
+    {
+      "id": 43143323117,
+      "html_url": "https://github.com/SIMOS21/call_center-ai/actions/runs/43143323117",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "75ed8e7ddbd2133060b92eab179b3e18c6174077"
+    }
+  ]
+}

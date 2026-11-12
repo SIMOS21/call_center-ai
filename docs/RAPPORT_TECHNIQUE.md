@@ -4,7 +4,7 @@ Audit final du 12 novembre 2026 : livraison PARTIAL. Rotation attestée par l'ut
 
 **Projet 3 : agent intelligent, orchestration d’outils, observabilité et gouvernance**  
 **État expérimental : 11 novembre 2026 — parcours vertical local validé**  
-Ce rapport est rédigé à partir des exécutions locales. Il fournit le contenu technique destiné à une mise en page de 8 à 12 pages ; sa pagination finale n’a pas été vérifiée. Les six scénarios guidés NVIDIA ont été exécutés ; leurs résultats ne sont ni un benchmark indépendant ni une preuve de CI distante.
+Ce rapport est rédigé à partir des exécutions locales et de l'audit du 12 novembre. Le PDF final comporte 10 pages, rendues et contrôlées visuellement. Les six scénarios guidés NVIDIA ne sont pas un benchmark indépendant ; la CI distante est désormais attestée séparément par un run GitHub réussi.
 
 ## 1. Contexte, besoin et périmètre
 
@@ -30,7 +30,7 @@ Le fournisseur choisi par l’utilisateur est NVIDIA. L’endpoint compatible Op
 
 Le workspace contenait commerceops_ai avec les modules et neuf tests du starter. Aucun dépôt Git n’était initialisé. Le premier lancement de pytest a échoué faute de dépendance installée. Un environnement .venv a été créé sans modifier Python global. Le téléchargement initial a été refusé par la restriction réseau Windows ; la commande a ensuite réussi avec l’accès autorisé. Les versions exactes installées sont enregistrées dans requirements-windows-py314.lock.txt.
 
-Python 3.14.3 était la seule version disponible. Les tests ont finalement été exécutés sur cette version ; la CI conserve Python 3.12. La réussite locale ne prouve donc pas une reproduction bit à bit de la CI. Le lock local est spécifique à Windows/Python 3.14, notamment pour les roues natives. Les contraintes portables d’origine restent dans requirements.txt. Une validation GitHub Actions à distance nécessite encore un dépôt distant autorisé.
+Python 3.14.3 était la seule version locale disponible. Les 42 tests ont été exécutés sur cette version, puis dans un conteneur Python 3.12 propre sans secrets et sur GitHub Actions. Le lock Windows reste spécifique à Python 3.14 ; celui du conteneur 3.12 est archivé séparément. Cette comparaison ne prétend pas à une reproduction bit à bit entre plateformes.
 
 WSL était initialement inaccessible. Après démarrage de Docker Desktop, seule la distribution docker-desktop était visible. Le travail a donc continué sous PowerShell. Docker Engine 29.0.1 et Compose 2.40.3 ont permis de créer une nouvelle base et un nouveau volume dédiés au projet. Aucun volume utilisateur existant n’a été supprimé. Le starter Medusa a été cloné dans le dossier voisin my-medusa-store, SHA 0a84b2ac13dbf5091a84af4b54ce0b19f6c9ad55, puis installé avec pnpm 10.11.1 et son lockfile gelé.
 
@@ -89,7 +89,7 @@ Une trace applicative MLflow a été persistée et relue par son identifiant tr-
 
 Les 42 tests hors ligne passent. Ils couvrent provenance, corpus vide ou absent, arguments invalides, isolation, concurrence, confirmation unique, statuts HTTP 401/403/404/409/429/500, timeout, réponses non conformes, limite totale d’outils et faux succès après erreur. Les tests de quality gate rejettent baseline absente, contrôles vides, métrique absente, valeur non finie et régression. Le lint de sécurité Python passe ; le lint officiel Medusa a aussi été exécuté.
 
-Le workflow GitHub Actions installe les dépendances, lance lint et pytest, contrôle l’absence de fichiers sensibles et évalue le snapshot de benchmark contre la baseline. Ce snapshot ne remplace pas une nouvelle collecte et une nouvelle expérience. La baseline correspond aux mesures du jeu de développement ; la marge de baisse de rappel est nulle pour détecter toute perte sur ce petit jeu fixe. Le script benchmark ne la remplace qu’avec une option explicite. Aucun pipeline distant, commit ou push n’a été effectué.
+Le workflow GitHub Actions installe les dépendances, lance lint et pytest, contrôle l'absence de fichiers sensibles et évalue le snapshot de benchmark contre la baseline. Ce snapshot ne remplace pas une nouvelle collecte et une nouvelle expérience. La baseline correspond au jeu de développement ; le script ne la remplace qu'avec une option explicite. Après autorisation de publication et contrôle des secrets, le commit 75ed8e7 a été publié et son run GitHub Actions 43143323117 a terminé avec succès.
 
 ## 9. Gouvernance, risques et limites
 
@@ -109,7 +109,7 @@ Le scénario de démonstration montre d’abord la santé des composants, une re
 
 Les commandes de relance sont centralisées dans scripts/start.cmd : infra, medusa, api, ui, mlflow et check. La reconstruction des données, sources et expériences est détaillée dans REPRODUCIBILITY.md. Les versions, SHA, résultats et limites sont reliés aux fichiers reports/. Les correctifs serveur sont archivés dans integrations/medusa afin de pouvoir les réappliquer au clone officiel. Le workspace VS Code pointe vers la racine Python et son interpréteur isolé.
 
-Le parcours réel couvre maintenant six outils, les confirmations et les refus. Chroma, Olist et le retour marchand local ont été exécutés. La clé utilisateur, initialement placée dans .env.example, a été déplacée vers .env et l’exemple nettoyé avant tout commit. Puisqu’elle est apparue dans une sortie technique, sa révocation/remplacement reste nécessaire côté NVIDIA. Une revue humaine des annotations et la mise en page finale du rapport sont encore nécessaires avant la remise. Le parcours vertical local est FONCTIONNEL DE BOUT EN BOUT. Les livrables restent à compléter par une CI distante autorisée, la vidéo et la mise en page finale ; eBay n’est pas collecté.
+Le parcours réel couvre six outils, les confirmations et les refus. Chroma, Olist et le retour marchand local ont été exécutés. L'utilisateur a confirmé la révocation de la clé exposée et l'installation d'une nouvelle clé ; une lecture sûre du catalogue a réussi après relance de l'API. La publication et la CI sont vérifiées, et le PDF comporte 10 pages. Restent la revue humaine des annotations, l'évaluation indépendante complète, les captures et la vidéo réelle. Le parcours local fonctionne, mais la livraison globale reste PARTIAL ; eBay n'est pas collecté.
 
 ## Références et preuves
 

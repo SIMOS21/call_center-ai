@@ -1,15 +1,15 @@
 {
   "status": "PASS",
-  "text_files_scanned": 87,
+  "text_files_scanned": 95,
   "trace_text_cells_scanned": 1715,
   "git_history": [
     {
       "repository": ".",
-      "commits_scanned": 0
+      "commits_scanned": 2
     },
     {
       "repository": "reports\\final-audit\\release",
-      "commits_scanned": 1
+      "commits_scanned": 2
     }
   ],
   "shell_history": "SCANNED",

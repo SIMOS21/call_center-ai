@@ -21,3 +21,7 @@ data/models/
 data/hf-cache/
 reports/final-audit/clean-source/
 reports/final-audit/release/
+data/evaluation/manual_gold.jsonl
+reports/final-audit/pdf-contact-sheet.png
+reports/final-audit/pdf-page10.png
+reports/final-audit/implementation-status-before.md

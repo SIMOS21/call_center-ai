@@ -64,6 +64,7 @@ def main():
                 story.append(p(paragraph.replace("\n", " ")))
         if index == 9:
             story.append(p("Compléments audit final : logs Python 3.14 et reproduction propre Python 3.12 dans reports/final-audit/. Jeu distinct gelé de 16 cas : revue humaine non attestée, mesures de récupération provisoires uniquement. Captures Admin/CI et vidéo non disponibles dans cette exportation.", "small"))
+            story.append(p("Résultats du nouveau brouillon (même sélection gelée, n=5 questions avec source) : lexical 1/5, dense 2/5. Aucune réussite de tâche indépendante mesurée, n=0. Rotation de clé confirmée par l'utilisateur et lecture sûre réussie. Publication autorisée : SIMOS21/call_center-ai ; CI du commit 75ed8e7 réussie, https://github.com/SIMOS21/call_center-ai/actions/runs/43143323117 . La livraison globale reste PARTIAL, malgré les contrôles techniques réussis.", "small"))
     target = output/"CommerceOps_AI_Rapport_Final.pdf"
     def footer(canvas, doc):
         canvas.setFont("Report", 8)
