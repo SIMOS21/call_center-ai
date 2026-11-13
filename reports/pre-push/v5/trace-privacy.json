@@ -1,0 +1,26 @@
+{
+  "scope": "Most recent 50 persisted traces after live NVIDIA acceptance, no raw contents or trace identifiers exported",
+  "traces_read": 50,
+  "findings": [],
+  "span_names": [
+    "tool.documentary_selection",
+    "tool.get_cart",
+    "tool.medusa.GET.carts",
+    "tool.medusa.GET.customers",
+    "tool.medusa.GET.products",
+    "tool.prepare_cart",
+    "tool.retrieval",
+    "tool.search_knowledge",
+    "tool.search_products"
+  ],
+  "status": "PASS",
+  "provider_calls_made_by_trace_scan": 0,
+  "live_nvidia_acceptance_completed_before_scan": true,
+  "rules_checked": [
+    "provider_token",
+    "jwt",
+    "private_key",
+    "bearer_token",
+    "known_local_credential"
+  ]
+}

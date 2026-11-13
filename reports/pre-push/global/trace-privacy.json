@@ -1,0 +1,38 @@
+{
+  "traces_read": 50,
+  "findings": [],
+  "span_names": [
+    "tool.action_confirmation",
+    "tool.documentary_selection",
+    "tool.get_cart",
+    "tool.medusa.GET.carts",
+    "tool.medusa.GET.customers",
+    "tool.medusa.GET.orders",
+    "tool.medusa.GET.products",
+    "tool.medusa.POST.carts",
+    "tool.prepare_cart_items",
+    "tool.retrieval",
+    "tool.search_knowledge",
+    "tool.search_products"
+  ],
+  "confirmation_correlations": [
+    {
+      "request_id": "d8226489a8184fc08afa1323c3933acb",
+      "span_name": "tool.action_confirmation",
+      "approval_status": "done",
+      "write_completed": true,
+      "child_span_count": 10,
+      "privacy": "no_inputs_no_outputs"
+    },
+    {
+      "request_id": "604e45275e1d40529bd481eaa0f476ef",
+      "span_name": "tool.action_confirmation",
+      "approval_status": "done",
+      "write_completed": true,
+      "child_span_count": 13,
+      "privacy": "no_inputs_no_outputs"
+    }
+  ],
+  "status": "PASS",
+  "scope": "Latest 50 persisted traces; no raw trace contents or trace identifiers exported"
+}

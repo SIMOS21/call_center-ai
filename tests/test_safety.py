@@ -101,10 +101,13 @@ def test_rag_unknown_empty_and_injection(tmp_path):
 
 def test_api_pending_once_and_foreign(monkeypatch):
     from app import api
+    from app.catalog import variant_snapshot
     monkeypatch.setattr(api.medusa, "customer", lambda token: {"id": token})
     writes = []
     monkeypatch.setattr(api.medusa, "create_cart", lambda *a: writes.append(a) or {"cart_id": "cart_real_mock"})
-    a = storage.create_approval("A", "prepare_cart", {"variant_id": "var_123", "quantity": 1})
+    product = {"id": "prod_test", "title": "Sweatshirt", "variants": [{"id": "var_123", "title": "M"}]}
+    monkeypatch.setattr(api.medusa, "products", lambda *a, **kw: {"products": [product]})
+    a = storage.create_approval("A", "prepare_cart", {"variant_id": "var_123", "quantity": 1}, variant_snapshot(product, product["variants"][0]))
     client = TestClient(api.api)
     assert client.post("/actions/confirm", json={"approval_id": a["approval_id"], "confirm": True}, headers={"Authorization": "Bearer B"}).status_code == 404
     assert client.post("/actions/confirm", json={"approval_id": a["approval_id"]}, headers={"Authorization": "Bearer A"}).json()["status"] == "awaiting_customer_confirmation"
@@ -132,20 +135,23 @@ def test_malformed_llm_response(monkeypatch):
     real_client = httpx.Client
     monkeypatch.setattr("app.agent.httpx.Client", lambda **kwargs: real_client(transport=httpx.MockTransport(lambda req: httpx.Response(200, json={"choices": []}))))
     with pytest.raises(BackendError, match="invalide"):
-        Agent().respond("test")
+        Agent().respond("Finalise mon panier")
 
 
 def test_approval_failed_is_not_retried(monkeypatch):
     from app import api
+    from app.catalog import variant_snapshot
     monkeypatch.setattr(api.medusa, "customer", lambda token: {"id": "A"})
     def fail(*a):
         raise BackendError("Backend unavailable")
     monkeypatch.setattr(api.medusa, "create_cart", fail)
-    a = storage.create_approval("A", "prepare_cart", {"variant_id": "var_123", "quantity": 1})
+    product = {"id": "prod_test", "title": "Sweatshirt", "variants": [{"id": "var_123", "title": "M"}]}
+    monkeypatch.setattr(api.medusa, "products", lambda *a, **kw: {"products": [product]})
+    a = storage.create_approval("A", "prepare_cart", {"variant_id": "var_123", "quantity": 1}, variant_snapshot(product, product["variants"][0]))
     client = TestClient(api.api)
     body = {"approval_id": a["approval_id"], "confirm": True}
     assert client.post("/actions/confirm", json=body, headers={"Authorization": "Bearer A"}).status_code == 502
-    assert storage.get_approval(a["approval_id"], "A")["status"] == "failed"
+    assert storage.get_approval(a["approval_id"], "A")["status"] == "needs_review"
     assert client.post("/actions/confirm", json=body, headers={"Authorization": "Bearer A"}).status_code == 409
 
 
@@ -154,11 +160,10 @@ def test_agent_total_tool_limit_and_trace(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "secret-never-log")
     real_client = httpx.Client
     def handler(req):
-        calls = [{"id": f"call_{i}", "type": "function", "function": {"name": "search_knowledge", "arguments": '{"question":"return product"}'}} for i in range(10)]
+        calls = [{"id": f"call_{i}", "type": "function", "function": {"name": "get_cart", "arguments": '{"cart_id":"cart_fixture"}'}} for i in range(10)]
         return httpx.Response(200, json={"choices": [{"message": {"tool_calls": calls}}]})
     monkeypatch.setattr("app.agent.httpx.Client", lambda **kwargs: real_client(transport=httpx.MockTransport(handler)))
-    monkeypatch.setattr(rag, "search", lambda *a: [])
-    result = Agent().respond("test")
+    result = Agent().respond("Finalise mon panier")
     assert result["tool_calls"] == 2 and result["escalation_recommended"]
     with storage.conn() as cx:
         assert cx.execute("SELECT COUNT(*) FROM audit_events").fetchone()[0] == 2

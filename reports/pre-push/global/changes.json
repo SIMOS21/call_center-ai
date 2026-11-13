@@ -1,0 +1,312 @@
+{
+  "incremental_source_changes": [
+    {
+      "repo": "commerceops_ai",
+      "path": "app/agent.py",
+      "before_sha256": "3c3876f62159ccfe17a73e94a2131add164f1191413b51801c75617bd6547f2a",
+      "after_sha256": "33a44bc521edef8ac1358e426daaa6f807ae9331561a56bd8beee326918d531e"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/api.py",
+      "before_sha256": "711da81c5246badaf405efd968e2fa75009176b9e209e8a6119c6a9aee3f1676",
+      "after_sha256": "5372f64f042b5c83dbfbbc95bf5d85c6e3f5c3752bfd276d54cc53f4ba3162f3"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/catalog.py",
+      "before_sha256": "4afef73f87aeacb2370836f4001caf7b94a0e6dde3fe20f5ff8603a6d05bf11d",
+      "after_sha256": "cbcaffb185df5652aa83dbb8ee06e1accfb924e63b3f0fb32f715fc793373831"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/conversations.py",
+      "before_sha256": "2ea065422bfc94d381e5dbef91fafeeb8867e391d5751566f2e6065ae0bf86df",
+      "after_sha256": "628d3bc9c4c1ce09f8a39263f295a84990263014c5a1c775d456cf32bde7f4c8"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/documentary.py",
+      "before_sha256": "5b61b84e657418c3cf4d4475680c998e7f79c906fb9e376afed7a0e05e72a845",
+      "after_sha256": "238b7d5c6bf2e1a7cd8c797ded93dc7f2f662d486a6318ca7c0077be3dea58c5"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/interpreter.py",
+      "before_sha256": null,
+      "after_sha256": "7a6b96afc6b6a5878307882dafd819101abcce04dc6b42748688f6924bb559c4"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/medusa.py",
+      "before_sha256": "cd520be662813522e6ff81890673d885693d8a78c17e162e0f44b4051da62b13",
+      "after_sha256": "483babf7408b0ee97964718e9415a9c124be0e33d950611efa269a639b95a1e7"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/presentation.py",
+      "before_sha256": "c9a3002b6d76176f69c49e580d9094ebb69acb92ab27e041b0317a72f9d17823",
+      "after_sha256": "60ec0120c575123b0549a4f494d2b87a3bf35e45c7cf1fbc43a3c71d1070a411"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/shopping.py",
+      "before_sha256": null,
+      "after_sha256": "2a667ca2d92d93925decd66815007b984aabf2f191cd208182adaca164cec946"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/storage.py",
+      "before_sha256": "9b894664839b52f670c67b47959f4337a4c6221421852d77bea5c1bd984beb6c",
+      "after_sha256": "0654796c2aa302f6d8e82438894cc5c21be50895798ab94774812d3307e1e8c7"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "app/ui.py",
+      "before_sha256": "d0704ce0e78cc11b87ec12fa214c73285cf3768410bd7b0b382e6f5544bcb08b",
+      "after_sha256": "9471798429448f17f9683aa75f3ae485b33df0303554988b01d9137d171d38b9"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "tests/conftest.py",
+      "before_sha256": "149c24a78b8cf5c6306fd8b3fe03a7b3a2a13cb1123354654526b0a0a553e973",
+      "after_sha256": "6f47421a95fbbd79894169028ccccb3ba145839ac48390a303dea100b17515bb"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "tests/test_global_acceptance.py",
+      "before_sha256": null,
+      "after_sha256": "f14e953ea6ca4bea18af18c962f2554fa2addedf5a05ac61c464518be5989ef0"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "tests/test_safety.py",
+      "before_sha256": "526fcf54346ecedfac1a1d650bcce4a866cd626f2d2a9e775c51d80313b30a24",
+      "after_sha256": "648409ee773c90fb9dee06ca340773427d3a53eed906c72e8975a797fc40d8c6"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": ".github/workflows/ci.yml",
+      "after_sha256": "088ce1fab1aca658e62888a451b844b5f0dd84a383ad6dfce1ee8f4fcddc153f",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "scripts/verify_global_acceptance.py",
+      "after_sha256": "76e095602ef631261e6b6b97532aa0dc0afd17c446e273a28d3a2f8ee3537d9c",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "scripts/verify_global_evidence.py",
+      "after_sha256": "888ecc3557de86854074927cdfe4a84a4fe7a145f0324e538725988339574759",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "scripts/publication_inventory.py",
+      "after_sha256": "351ba0647326817c618b11daf9fe5e779763e37facf5c21904901814c8625b1b",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "docs/MEDUSA_UNCERTAIN_WRITES.md",
+      "after_sha256": "81bfd0589334c50a9563543710e3d5ce9bd8d8422f2fb850db78b2b9b4131df6",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "after_sha256": "c50cc0e09c07d5b69ae6ec3f2f4dbb446a94dc3bf36e6d0b704bd596c6fcb526",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "integrations/medusa/README.md",
+      "after_sha256": "cf4cbca6f7ca35321dc216850b40a3aa898cd22560dfe5ba03e7fefd69be789a",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "integrations/medusa/commerceops-ownership.ts",
+      "after_sha256": "ad67a9e1a16dd19c416e0863eada5473ef70c4b4b3f341a72453f29fc5aa0f7b",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "integrations/medusa/middlewares.ts",
+      "after_sha256": "5183647ffa4fe9bb81c2ad8d2ab066a2f5bb09e9acdb7f4047a1de7adaab80e5",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "integrations/medusa/dependencies/backend.package.json",
+      "after_sha256": "b5b8168ecff222276113ffe3383702ba9868388df131831bc5d73dfd03597e68",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "integrations/medusa/dependencies/tests/cart-ownership.test.cjs",
+      "after_sha256": "f0303904a2fb296c18eae7ec8ee58769a391fd0973254029233b05b52e1521e9",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "ROOT_CAUSE_ANALYSIS.md",
+      "after_sha256": "1c1637a5de7fb972cde7517679c37280a8337c59af5e178bff389c21f386bed3",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "FUNCTIONAL_TEST_MATRIX.md",
+      "after_sha256": "3b4c2cf6bcce8c82e5b7b59e91bfbae4a84ea249adf77401e2340fb71fe322e6",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "FINAL_AUDIT_GLOBAL.md",
+      "after_sha256": "025c1d66c80664e4f70c2e4f5f51d032e4f9409459cc058ceb34c64269956a9e",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "commerceops_ai",
+      "path": "reports/pre-push/global/PUBLICATION_CHECKLIST.md",
+      "after_sha256": "8215a00185f13f69b9791f73cb28f20aef3a744c99ea2bb868743e1df993844c",
+      "before_sha256": "not snapshotted separately"
+    },
+    {
+      "repo": "my-medusa-store",
+      "path": "apps/backend/package.json",
+      "after_sha256": "b5b8168ecff222276113ffe3383702ba9868388df131831bc5d73dfd03597e68"
+    },
+    {
+      "repo": "my-medusa-store",
+      "path": "apps/backend/src/api/commerceops-ownership.ts",
+      "after_sha256": "ad67a9e1a16dd19c416e0863eada5473ef70c4b4b3f341a72453f29fc5aa0f7b"
+    },
+    {
+      "repo": "my-medusa-store",
+      "path": "apps/backend/src/api/middlewares.ts",
+      "after_sha256": "5183647ffa4fe9bb81c2ad8d2ab066a2f5bb09e9acdb7f4047a1de7adaab80e5"
+    },
+    {
+      "repo": "my-medusa-store",
+      "path": "apps/backend/test/cart-ownership.test.cjs",
+      "after_sha256": "f0303904a2fb296c18eae7ec8ee58769a391fd0973254029233b05b52e1521e9"
+    }
+  ],
+  "git": {
+    "commerceops_ai": {
+      "head": "510549132f9d9fde58afd108063ab7c1cad9cf85",
+      "index_sha256": "40abbad3156f373e61cdb76fac373a53ce6efcc46499e862600bd7e041e80002",
+      "head_unchanged": true,
+      "index_unchanged": true
+    },
+    "my-medusa-store": {
+      "head": "0a84b2ac13dbf5091a84af4b54ce0b19f6c9ad55",
+      "index_sha256": "22765c578c43d3309ce6ed89906b60be8e1f9075b640fea4c1faba48d4676334",
+      "head_unchanged": true,
+      "index_unchanged": true
+    }
+  },
+  "private_runtime_harnesses_not_for_publication": [
+    "global_delivery.py"
+  ],
+  "evidence_files": [
+    "PUBLICATION_CHECKLIST.md",
+    "baseline.json",
+    "before-after.json",
+    "before-command.json",
+    "before.json",
+    "before.log",
+    "changes.json",
+    "clean-install.log",
+    "clean-pip-check.log",
+    "clean-run.json",
+    "clean-run.log",
+    "clean-tools.log",
+    "commerceops_ai-include.txt",
+    "commerceops_ai-inventory.json",
+    "dependency-matrix.json",
+    "documentary-grounding.json",
+    "encoding-recovery.json",
+    "evidence-check-command.json",
+    "evidence-check.log",
+    "frozen-integrity.json",
+    "gate-development-clean.log",
+    "gate-development-command.json",
+    "gate-development.log",
+    "gate-historical-clean.log",
+    "gate-historical-command.json",
+    "gate-historical.log",
+    "live-finish.log",
+    "live-idempotent-rerun-command.json",
+    "live-idempotent-rerun.log",
+    "live-prepare.log",
+    "live-scenarios-encoding-original.json",
+    "live-scenarios.json",
+    "medusa-before-source.json",
+    "medusa-lint-command.json",
+    "medusa-lint.log",
+    "medusa-owner-after-read.json",
+    "medusa-owner-before.json",
+    "medusa-security-command.json",
+    "medusa-security.log",
+    "my-medusa-store-include.txt",
+    "my-medusa-store-inventory.json",
+    "node-audit-command.json",
+    "node-audit.json",
+    "node-audit.log",
+    "pip-check-command.json",
+    "pip-check.log",
+    "publication-inventory-command.json",
+    "publication-inventory.log",
+    "publication-summary.json",
+    "pytest-baseline-first-command.json",
+    "pytest-baseline-first.log",
+    "pytest-baseline-first.xml",
+    "pytest-campaign-command.json",
+    "pytest-campaign-intermediate.log",
+    "pytest-campaign-intermediate.xml",
+    "pytest-campaign.log",
+    "pytest-campaign.xml",
+    "pytest-clean.log",
+    "pytest-clean.xml",
+    "pytest-development-command.json",
+    "pytest-development.log",
+    "pytest-development.xml",
+    "pytest-local-command.json",
+    "pytest-local-pre-trace.log",
+    "pytest-local-pre-trace.xml",
+    "pytest-local.log",
+    "pytest-local.xml",
+    "pytest-new-first-command.json",
+    "pytest-new-first.log",
+    "pytest-new-first.xml",
+    "python-audit-command.json",
+    "python-audit.json",
+    "python312.lock.txt",
+    "reload-first.json",
+    "restart-persistence.json",
+    "ruff-clean.log",
+    "ruff-command.json",
+    "ruff.log",
+    "sca-container.log",
+    "sca-install.log",
+    "sca.log",
+    "secrets-clean.log",
+    "secrets-command.json",
+    "secrets.log",
+    "services-health.json",
+    "sqlite-acceptance.json",
+    "trace-privacy.json",
+    "unit-cases-intermediate.jsonl",
+    "unit-cases-pre-trace.jsonl",
+    "unit-cases.jsonl",
+    "utf8-readonly-recheck-command.json",
+    "utf8-readonly-recheck.json",
+    "utf8-readonly-recheck.log",
+    "validation-summary.json",
+    "vendor-versions.json"
+  ]
+}

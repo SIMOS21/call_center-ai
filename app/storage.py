@@ -29,6 +29,11 @@ CREATE TABLE IF NOT EXISTS audit_events (
  tool_name TEXT NOT NULL, category TEXT NOT NULL,
  success INTEGER NOT NULL, duration_ms REAL NOT NULL,
  error_type TEXT, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS approval_catalog (
+ approval_id TEXT PRIMARY KEY, snapshot_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS cart_action_locks (
+ cart_id TEXT PRIMARY KEY, approval_id TEXT NOT NULL, customer_id TEXT NOT NULL,
+ created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS historical_olist_orders (
  order_id TEXT PRIMARY KEY, customer_id TEXT NOT NULL,
  status TEXT, purchase_at TEXT, delivered_at TEXT);
@@ -66,12 +71,20 @@ def get_tickets(customer_id: str) -> list[dict]:
         return [dict(r) for r in cx.execute("SELECT * FROM tickets WHERE customer_id=? ORDER BY created_at DESC LIMIT 50", (customer_id,))]
 
 
-def create_approval(customer_id: str, kind: str, arguments: dict) -> dict:
+def create_approval(customer_id: str, kind: str, arguments: dict, snapshot: dict | None = None) -> dict:
     approval_id = "appr_" + uuid.uuid4().hex
     with conn() as cx:
         cx.execute("INSERT INTO approvals (id,customer_id,kind,arguments_json,created_at) VALUES (?,?,?,?,?)",
                    (approval_id, customer_id, kind, json.dumps(arguments), now()))
+        if snapshot is not None:
+            cx.execute("INSERT INTO approval_catalog VALUES (?,?)", (approval_id, json.dumps(snapshot, sort_keys=True)))
     return {"approval_id": approval_id, "status": "pending_confirmation", "kind": kind}
+
+
+def approval_snapshot(approval_id):
+    with conn() as cx:
+        row = cx.execute("SELECT snapshot_json FROM approval_catalog WHERE approval_id=?", (approval_id,)).fetchone()
+    return json.loads(row[0]) if row else None
 
 
 def get_approval(approval_id: str, customer_id: str) -> dict | None:
@@ -85,6 +98,23 @@ def mark_approval(approval_id: str, customer_id: str) -> bool:
         cur = cx.execute("UPDATE approvals SET status='confirmed' WHERE id=? AND customer_id=? AND status='pending'",
                          (approval_id, customer_id))
         return cur.rowcount == 1
+
+
+def claim_cart_action(cart_id, approval_id, customer_id):
+    with conn() as cx:
+        result = cx.execute("INSERT OR IGNORE INTO cart_action_locks VALUES (?,?,?,?)",
+                            (cart_id, approval_id, customer_id, now()))
+        return result.rowcount == 1
+
+
+def release_cart_action(cart_id, approval_id):
+    with conn() as cx:
+        cx.execute("DELETE FROM cart_action_locks WHERE cart_id=? AND approval_id=?", (cart_id, approval_id))
+
+
+def cart_action_locked(cart_id):
+    with conn() as cx:
+        return cx.execute("SELECT 1 FROM cart_action_locks WHERE cart_id=?", (cart_id,)).fetchone() is not None
 
 
 def audit(request_id: str, tool: str, category: str, success: bool, duration_ms: float, error_type: str | None = None) -> None:

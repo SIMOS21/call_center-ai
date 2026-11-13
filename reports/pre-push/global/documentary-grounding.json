@@ -1,0 +1,450 @@
+{
+  "method": "Each rendered unit mapped to original quoted passages; no human semantic score inferred",
+  "index_sha256": "d2acf55d22f898a0159571020f4d2dc0dcca218dc3b7bcf21664b1d230cfcdcc",
+  "rows": [
+    {
+      "scenario": "J'ai reçu mon sweatshirt dans la mauvaise couleur. Comment puis-je le retourner ?",
+      "assertion": "Faire vérifier l'achat et les critères de retour du scénario, notamment le niveau d'adhésion.",
+      "fact_ids": [
+        "purchase",
+        "eligibility"
+      ],
+      "evidence": [
+        {
+          "id": "purchase",
+          "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+          "quote": "Action: Validate Purchase",
+          "chunk_ids": [
+            "91c33756af4b197bfd133c8a"
+          ]
+        },
+        {
+          "id": "eligibility",
+          "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+          "quote": "Confirm their order can be returned, by checking their membership level.",
+          "chunk_ids": [
+            "07b4c175ed64b6e9711189ac"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "J'ai reçu mon sweatshirt dans la mauvaise couleur. Comment puis-je le retourner ?",
+      "assertion": "Si le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+      "fact_ids": [
+        "return_accepted",
+        "return_label"
+      ],
+      "evidence": [
+        {
+          "id": "return_accepted",
+          "text": "La suite du scénario dépend de l'acceptation du retour.",
+          "quote": "If the customer can return, tell them the good news and go to the next step",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        },
+        {
+          "id": "return_label",
+          "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+          "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "J'ai reçu mon sweatshirt dans la mauvaise couleur. Comment puis-je le retourner ?",
+      "assertion": "ABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.",
+      "fact_ids": [
+        "return_modes"
+      ],
+      "evidence": [
+        {
+          "id": "return_modes",
+          "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+          "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+          "chunk_ids": [
+            "45906b7fa4c2fb24dff0f315"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Peux-tu résumer cette procédure en trois étapes ?",
+      "assertion": "Faire vérifier l'achat et le niveau d'adhésion selon le scénario ABCD.",
+      "fact_ids": [
+        "purchase",
+        "eligibility"
+      ],
+      "evidence": [
+        {
+          "id": "purchase",
+          "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+          "quote": "Action: Validate Purchase",
+          "chunk_ids": [
+            "91c33756af4b197bfd133c8a"
+          ]
+        },
+        {
+          "id": "eligibility",
+          "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+          "quote": "Confirm their order can be returned, by checking their membership level.",
+          "chunk_ids": [
+            "07b4c175ed64b6e9711189ac"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Peux-tu résumer cette procédure en trois étapes ?",
+      "assertion": "Si le retour est accepté, préparer l'étiquette à imprimer avec l'adresse complète.",
+      "fact_ids": [
+        "return_accepted",
+        "return_label"
+      ],
+      "evidence": [
+        {
+          "id": "return_accepted",
+          "text": "La suite du scénario dépend de l'acceptation du retour.",
+          "quote": "If the customer can return, tell them the good news and go to the next step",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        },
+        {
+          "id": "return_label",
+          "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+          "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Peux-tu résumer cette procédure en trois étapes ?",
+      "assertion": "Choisir entre les modes cités par ABCD : envoi postal, magasin ou centre de dépôt.",
+      "fact_ids": [
+        "return_modes"
+      ],
+      "evidence": [
+        {
+          "id": "return_modes",
+          "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+          "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+          "chunk_ids": [
+            "45906b7fa4c2fb24dff0f315"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Réponse courte, s'il te plaît.",
+      "assertion": "Vérifier l'achat et l'éligibilité décrite dans ABCD.",
+      "fact_ids": [
+        "purchase",
+        "eligibility"
+      ],
+      "evidence": [
+        {
+          "id": "purchase",
+          "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+          "quote": "Action: Validate Purchase",
+          "chunk_ids": [
+            "91c33756af4b197bfd133c8a"
+          ]
+        },
+        {
+          "id": "eligibility",
+          "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+          "quote": "Confirm their order can be returned, by checking their membership level.",
+          "chunk_ids": [
+            "07b4c175ed64b6e9711189ac"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Réponse courte, s'il te plaît.",
+      "assertion": "Après acceptation, préparer l'étiquette et l'adresse.",
+      "fact_ids": [
+        "return_accepted",
+        "return_label"
+      ],
+      "evidence": [
+        {
+          "id": "return_accepted",
+          "text": "La suite du scénario dépend de l'acceptation du retour.",
+          "quote": "If the customer can return, tell them the good news and go to the next step",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        },
+        {
+          "id": "return_label",
+          "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+          "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Réponse courte, s'il te plaît.",
+      "assertion": "Modes ABCD : poste, magasin ou centre de dépôt.",
+      "fact_ids": [
+        "return_modes"
+      ],
+      "evidence": [
+        {
+          "id": "return_modes",
+          "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+          "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+          "chunk_ids": [
+            "45906b7fa4c2fb24dff0f315"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Explique cette procédure en détail.",
+      "assertion": "Faire vérifier l'achat concerné avant de poursuivre.",
+      "fact_ids": [
+        "purchase"
+      ],
+      "evidence": [
+        {
+          "id": "purchase",
+          "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+          "quote": "Action: Validate Purchase",
+          "chunk_ids": [
+            "91c33756af4b197bfd133c8a"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Explique cette procédure en détail.",
+      "assertion": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+      "fact_ids": [
+        "eligibility"
+      ],
+      "evidence": [
+        {
+          "id": "eligibility",
+          "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+          "quote": "Confirm their order can be returned, by checking their membership level.",
+          "chunk_ids": [
+            "07b4c175ed64b6e9711189ac"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Explique cette procédure en détail.",
+      "assertion": "Si le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+      "fact_ids": [
+        "return_accepted",
+        "return_label"
+      ],
+      "evidence": [
+        {
+          "id": "return_accepted",
+          "text": "La suite du scénario dépend de l'acceptation du retour.",
+          "quote": "If the customer can return, tell them the good news and go to the next step",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        },
+        {
+          "id": "return_label",
+          "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+          "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Explique cette procédure en détail.",
+      "assertion": "ABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.",
+      "fact_ids": [
+        "return_modes"
+      ],
+      "evidence": [
+        {
+          "id": "return_modes",
+          "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+          "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+          "chunk_ids": [
+            "45906b7fa4c2fb24dff0f315"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Explique cette procédure en détail.",
+      "assertion": "Si le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.",
+      "fact_ids": [
+        "return_refused"
+      ],
+      "evidence": [
+        {
+          "id": "return_refused",
+          "text": "Si le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.",
+          "quote": "If the customer cannot return, apologize and explain the problem. Then [End Conversation]",
+          "chunk_ids": [
+            "c5b37a3703cbf756e034abc1"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Il manque un article dans mon colis. Quelle procédure suivre ?",
+      "assertion": "La procédure commence par identifier le compte concerné.",
+      "fact_ids": [
+        "account"
+      ],
+      "evidence": [
+        {
+          "id": "account",
+          "text": "La procédure commence par identifier le compte concerné.",
+          "quote": "Action: Pull up Account",
+          "chunk_ids": [
+            "309b17f897f16e651705b038"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Il manque un article dans mon colis. Quelle procédure suivre ?",
+      "assertion": "Faire vérifier l'achat concerné avant de poursuivre.",
+      "fact_ids": [
+        "purchase"
+      ],
+      "evidence": [
+        {
+          "id": "purchase",
+          "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+          "quote": "Action: Validate Purchase",
+          "chunk_ids": [
+            "309b17f897f16e651705b038"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Il manque un article dans mon colis. Quelle procédure suivre ?",
+      "assertion": "Préciser depuis combien de temps le colis est attendu.",
+      "fact_ids": [
+        "reason"
+      ],
+      "evidence": [
+        {
+          "id": "reason",
+          "text": "Préciser depuis combien de temps le colis est attendu.",
+          "quote": "Ask how long they have been waiting",
+          "chunk_ids": [
+            "4e8d01beaf9ad85fc69bc44d"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Ma carte bancaire est refusée. Que faire ?",
+      "assertion": "Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.",
+      "fact_ids": [
+        "retry"
+      ],
+      "evidence": [
+        {
+          "id": "retry",
+          "text": "Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.",
+          "quote": "Instruct the customer to try entering their credit card information again",
+          "chunk_ids": [
+            "e077488f9f320e47912a64b2"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Ma carte bancaire est refusée. Que faire ?",
+      "assertion": "Se déconnecter du compte puis se reconnecter avant de réessayer.",
+      "fact_ids": [
+        "reconnect"
+      ],
+      "evidence": [
+        {
+          "id": "reconnect",
+          "text": "Se déconnecter du compte puis se reconnecter avant de réessayer.",
+          "quote": "Instruct the customer to log out of their account and log back in.",
+          "chunk_ids": [
+            "93c9eeba69aa29d449e7c3be"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    },
+    {
+      "scenario": "Ma carte bancaire est refusée. Que faire ?",
+      "assertion": "Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.",
+      "fact_ids": [
+        "expiry"
+      ],
+      "evidence": [
+        {
+          "id": "expiry",
+          "text": "Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.",
+          "quote": "Have the customer check the expiration date",
+          "chunk_ids": [
+            "93c9eeba69aa29d449e7c3be"
+          ]
+        }
+      ],
+      "quotes_present_in_original_index_chunks": true,
+      "status": "PASS"
+    }
+  ],
+  "human_semantic_review": "PENDING"
+}

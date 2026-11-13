@@ -1,5 +1,5 @@
 ﻿import { authenticate, configureStoreSearch, defineMiddlewares } from "@medusajs/framework/http"
-import { ensureCartOwner, ensureReturnOwner } from "./commerceops-ownership"
+import { ensureCartOwner, ensureCustomerCartOwner, ensureReturnOwner } from "./commerceops-ownership"
 
 export default defineMiddlewares({
   routes: [
@@ -17,6 +17,21 @@ export default defineMiddlewares({
       method: ["POST"],
       matcher: "/store/carts/:id/complete",
       middlewares: [authenticate("customer", ["session", "bearer"]), ensureCartOwner],
+    },
+    {
+      method: ["GET", "POST"],
+      matcher: "/store/carts/:id",
+      middlewares: [authenticate("customer", ["session", "bearer"], { allowUnauthenticated: true, requireMfa: true }), ensureCustomerCartOwner],
+    },
+    {
+      method: ["POST"],
+      matcher: "/store/carts/:id/line-items",
+      middlewares: [authenticate("customer", ["session", "bearer"], { allowUnauthenticated: true, requireMfa: true }), ensureCustomerCartOwner],
+    },
+    {
+      method: ["POST", "DELETE"],
+      matcher: "/store/carts/:id/line-items/:line_id",
+      middlewares: [authenticate("customer", ["session", "bearer"], { allowUnauthenticated: true, requireMfa: true }), ensureCustomerCartOwner],
     },
   ],
 })

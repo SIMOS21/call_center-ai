@@ -1,0 +1,9 @@
+{
+  "cases": 16,
+  "dataset_sha256": "6b0e29ced596fe2458ff1ebdc1d2cf76f2816d479cadcf28ff1c924403aebced",
+  "review_file_sha256": "5be3a97fe2c48d8c18a9d7b162043227bb571e7181cdc6a53cfac72164eac438",
+  "approved": false,
+  "independent_evaluation_status": "PENDING",
+  "executed_cases": 0,
+  "case_contents_exported": false
+}

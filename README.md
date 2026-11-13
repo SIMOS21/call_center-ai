@@ -1,5 +1,29 @@
 # CommerceOps AI — état local vérifié
 
+## Synthèse RAG et formats — dernière correction
+
+Le suivi « résume cette procédure en trois étapes » conserve désormais la demande exacte et produit trois étapes numérotées, avec les informations concrètes réellement retrouvées : éligibilité du scénario, étiquette après acceptation et modes cités par ABCD. Les formats court et détaillé ont un rendu distinct. Une étape dont l'extrait ou la condition manque n'est pas inventée. NVIDIA sélectionne les faits ; le backend compose un texte français contrôlé, avec citation et portée ABCD explicites.
+
+**116 tests passent**, Ruff au profil CI et les deux quality gates passent. [Diagnostic, réponses réelles avant/après et audit de chaque étape](docs/RAG_SYNTHESIS_FORMATS.md). Panier, authentification et interface sont préservés ; aucun nouvel acte commercial n'a été exécuté pour ces vérifications. Le jeu final gelé n'est pas utilisé. Les sections suivantes conservent l'état des interventions précédentes.
+
+## Correction globale V2 — état courant
+
+L'interface présente des cartes produit/panier et des confirmations lisibles, sans JSON ni identifiants techniques par défaut. Après création confirmée, « mon panier » consulte réellement Medusa avec contrôle de propriété. Le volet développeur est facultatif. Les demandes documentaires utilisent une recherche déterministe et des faits français liés à des extraits vérifiés ; ABCD reste une référence de recherche, jamais une politique commerciale de la boutique.
+
+**104 tests passent**, Ruff au profil CI, secrets et deux quality gates passent. Le parcours réel Streamlit/AppTest → FastAPI → Medusa a créé puis relu un panier de Sweatshirt M (quantité 1, montant réel 10 EUR), avec annulation, refus 409/404 et reset vérifiés. Quatre questions de la vraie UI ont utilisé NVIDIA. Sur 10 questions de développement connues, Recall@5 documentaire 10/10 contre 4/10 pour les chunks enrichis ; **aucune généralisation ni fidélité humaine indépendante déclarée**. Le jeu final reste gelé et non utilisé.
+
+[Causes, corrections, mesures et limites V2](docs/RAG_AND_CART_FIXES.md) · [État de livraison](docs/IMPLEMENTATION_STATUS.md) · [Preuve du parcours réel](reports/global-v2/live.json). Le navigateur n'a pas été contrôlé visuellement ; AppTest teste le script réel et ses requêtes. Les sections suivantes conservent l'historique des interventions antérieures.
+
+## Mémoire de conversation et panier
+
+Le parcours « Medusa Sweatshirt taille M → Oui » conserve désormais le produit, la variante et la quantité côté backend dans une session opaque liée au client Medusa. Le « oui » prépare uniquement une approbation ; l'interface affiche ses arguments exacts et demande une case puis un bouton de confirmation. Un panier n'est annoncé créé qu'après la réponse de l'API métier. Le stock reste indiqué comme non vérifié. [Architecture, confidentialité, tests et limites](docs/CONVERSATION_MEMORY.md).
+
+88 tests hors ligne passent. Le parcours réel du script Streamlit, piloté par AppTest vers FastAPI et Medusa sans mocks, a créé un panier local explicitement confirmé ; aucune nouvelle commande n'a été créée. Preuves : [rapport réel](reports/conversations/live-streamlit-medusa.json) et [contrôles](reports/conversations/checks.json). Ce test ne valide pas le rendu d'un navigateur ni la fidélité humaine du résumé RAG.
+
+## Mise à jour RAG
+
+Ingestion documentaire multi-format, index versionné à publication atomique et rechargement sans cache obsolète après reconstruction : voir [procédure et résultats](docs/RAG_UPDATES.md). Le lecteur actif utilise le candidat lexical avec métadonnées (55 documents, 217 passages) ; la baseline de 205 passages est préservée. Hybride disponible en option, sans gain supplémentaire établi par rapport au lexical enrichi sur les 12 cas connus. 73 tests passent ; Medusa et ses contrôles de sécurité sont inchangés. Un nouveau test final de 16 cas est gelé et non exécuté ; aucune généralisation ni fidélité humaine n'est déclarée comme validée.
+
 ## Audit de livraison du 12 novembre 2026
 
 **Livraison PARTIAL**, même si le parcours local historique fonctionne. État courant : [IMPLEMENTATION_STATUS](docs/IMPLEMENTATION_STATUS.md). Rotation NVIDIA confirmée par l'utilisateur et lecture sûre vérifiée ; 42 tests repassés sous Python 3.14 et dans un environnement Docker Python 3.12 propre. Rapport exporté en PDF de 10 pages dans `output/pdf/`. Nouveau jeu distinct de 16 cas gelé, mais revue humaine non attestée : les mesures provisoires 1/5 lexical et 2/5 dense ne sont pas une validation indépendante. Succès de tâche indépendant : non évalué, n=0. Vidéo et captures Admin à enregistrer manuellement. La publication/CI ne sera déclarée réussie qu'avec un lien de run observé.

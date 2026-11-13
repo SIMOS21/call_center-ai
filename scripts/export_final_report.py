@@ -16,12 +16,17 @@ from pypdf import PdfReader
 def main():
     output = Path("output/pdf")
     output.mkdir(parents=True, exist_ok=True)
-    pdfmetrics.registerFont(TTFont("Report", "C:/Windows/Fonts/arial.ttf"))
-    pdfmetrics.registerFont(TTFont("ReportBold", "C:/Windows/Fonts/arialbd.ttf"))
+    regular = Path("C:/Windows/Fonts/arial.ttf")
+    bold = Path("C:/Windows/Fonts/arialbd.ttf")
+    if not regular.exists():
+        regular = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+        bold = regular.with_name("DejaVuSans-Bold.ttf")
+    pdfmetrics.registerFont(TTFont("Report", str(regular)))
+    pdfmetrics.registerFont(TTFont("ReportBold", str(bold)))
     styles = {
-        "body": ParagraphStyle("body", fontName="Report", fontSize=10, leading=14, spaceAfter=9, alignment=TA_LEFT),
-        "title": ParagraphStyle("title", fontName="ReportBold", fontSize=19, leading=24, spaceAfter=18, textColor=colors.HexColor("#15324c")),
-        "small": ParagraphStyle("small", fontName="Report", fontSize=8, leading=11, spaceAfter=6),
+        "body": ParagraphStyle("body", fontName="Report", fontSize=11.5, leading=16.5, spaceAfter=11, alignment=TA_LEFT),
+        "title": ParagraphStyle("title", fontName="ReportBold", fontSize=21, leading=26, spaceAfter=18, textColor=colors.HexColor("#15324c")),
+        "small": ParagraphStyle("small", fontName="Report", fontSize=9, leading=12.5, spaceAfter=6),
     }
     def p(text, style="body"):
         text = text.replace("—", "-").replace("–", "-").replace("\u2011", "-")
@@ -40,14 +45,14 @@ def main():
         story.append(p("COMMERCEOPS AI / PROJET 3 ENSAF", "small"))
         story.append(p(title, "title"))
         if index == 0:
-            story.append(p("Audit du 12 novembre 2026 : livraison PARTIAL. Rotation confirmée par l'utilisateur ; évaluation humaine et vidéo non attestées. Les résultats guidés historiques ne constituent pas une mesure indépendante.", "small"))
+            story.append(p("Correction après vérification V4, 12 novembre 2026. Tests techniques et résultats de développement. Revue humaine indépendante non terminée.", "small"))
         if index == 1:
             diagram = Drawing(460, 105)
-            labels = [(0, 65, "Streamlit"), (115, 65, "FastAPI / Agent"), (290, 65, "Medusa / PostgreSQL"), (115, 10, "RAG ABCD"), (290, 10, "SQLite / MLflow")]
+            labels = [(0, 65, "Streamlit"), (115, 65, "FastAPI / Agent"), (290, 65, "Medusa / PostgreSQL"), (0, 10, "NVIDIA Nemotron"), (115, 10, "RAG ABCD"), (290, 10, "SQLite / MLflow")]
             for x, y, label in labels:
                 diagram.add(Rect(x, y, 108 if x < 290 else 165, 30, fillColor=colors.HexColor("#e8f1f7"), strokeColor=colors.HexColor("#315b75")))
                 diagram.add(String(x+7, y+11, label, fontName="Report", fontSize=9))
-            for x1,y1,x2,y2 in [(108,80,115,80),(223,80,290,80),(169,65,169,40),(223,75,290,30)]:
+            for x1,y1,x2,y2 in [(108,80,115,80),(223,80,290,80),(169,65,169,40),(115,65,54,40),(223,75,290,30)]:
                 diagram.add(Line(x1,y1,x2,y2,strokeColor=colors.HexColor("#315b75")))
             story.extend([diagram, Spacer(1, 10)])
         for paragraph in body.split("\n\n"):
@@ -62,31 +67,32 @@ def main():
                 story.extend([table, Spacer(1,10)])
             else:
                 story.append(p(paragraph.replace("\n", " ")))
-        if index == 9:
-            story.append(p("Compléments audit final : logs Python 3.14 et reproduction propre Python 3.12 dans reports/final-audit/. Jeu distinct gelé de 16 cas : revue humaine non attestée, mesures de récupération provisoires uniquement. Captures Admin/CI et vidéo non disponibles dans cette exportation.", "small"))
-            story.append(p("Résultats du nouveau brouillon (même sélection gelée, n=5 questions avec source) : lexical 1/5, dense 2/5. Aucune réussite de tâche indépendante mesurée, n=0. Rotation de clé confirmée par l'utilisateur et lecture sûre réussie. Publication autorisée : SIMOS21/call_center-ai ; CI du commit 75ed8e7 réussie, https://github.com/SIMOS21/call_center-ai/actions/runs/43143323117 . La livraison globale reste PARTIAL, malgré les contrôles techniques réussis.", "small"))
     target = output/"CommerceOps_AI_Rapport_Final.pdf"
     def footer(canvas, doc):
         canvas.setFont("Report", 8)
-        canvas.drawString(43, 27, "CommerceOps AI - Audit final - 12 novembre 2026")
+        canvas.drawString(43, 27, "CommerceOps AI - Correction audit V4 - 12 novembre 2026")
         canvas.drawRightString(552, 27, str(doc.page))
     SimpleDocTemplate(str(target), pagesize=(595.28,841.89), leftMargin=45,rightMargin=45,topMargin=38,bottomMargin=42).build(story,onFirstPage=footer,onLaterPages=footer)
     pages = len(PdfReader(target).pages)
     assert 8 <= pages <= 12, pages
-    Path("reports/final-audit/pdf-validation.json").write_text(json.dumps({"path":str(target),"pages":pages,"visual_review":"PENDING"},indent=2),encoding="utf-8")
+    evidence = Path("reports/pre-push/conversation-final/pdf")
+    evidence.mkdir(parents=True, exist_ok=True)
+    Path("reports/pre-push/conversation-final/pdf-validation.json").write_text(json.dumps({"path":str(target),"pages":pages,"visual_review":"PENDING"},indent=2),encoding="utf-8")
     print("PDF pages:",pages)
-    import fitz
+    import pymupdf as fitz
     document = fitz.open(target)
     from PIL import Image
     previews=[]
     for number,page in enumerate(document):
-        pix=page.get_pixmap(matrix=fitz.Matrix(.8,.8))
+        pix=page.get_pixmap(matrix=fitz.Matrix(1.3,1.3))
+        pix.save(str(evidence / f"page-{number+1}.png"))
         pic=Image.frombytes("RGB",[pix.width,pix.height],pix.samples)
         previews.append(pic)
-    sheet=Image.new("RGB",(previews[0].width*5,previews[0].height*3),"#cccccc")
-    for i,pic in enumerate(previews):
-        sheet.paste(pic,((i%5)*pic.width,(i//5)*pic.height))
-    sheet.save("reports/final-audit/pdf-contact-sheet.png")
+    for start in range(0, len(previews), 2):
+        sheet = Image.new("RGB", (previews[0].width*2, previews[0].height), "white")
+        for column, pic in enumerate(previews[start:start+2]):
+            sheet.paste(pic, (column*pic.width, 0))
+        sheet.save(str(evidence / f"pair-{start//2+1}.png"))
 
 
 if __name__ == "__main__":

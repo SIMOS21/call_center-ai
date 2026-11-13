@@ -1,0 +1,3 @@
+
+# Preserve exact frozen evaluation bytes and review SHA on every platform.
+evaluation/final-v3.jsonl -text

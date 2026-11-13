@@ -84,7 +84,7 @@
         ],
         "tool_calls": 1,
         "request_id": "58f0aa5685c44af2840b4bae4d31b844",
-        "answer": "Voici le statut de votre commande **order_01M76EPFXQEJ8VPAC3N5TCSJ6R** :\n\n- **Statut** : pending\n- **Statut de fulfillment** : not_fulfilled\n- **Statut de paiement** : authorized\n\nLa commande est en attente et n'a pas encore été expédiée. Le paiement a été autorisé.",
+        "answer": "Voici le statut de votre commande **[DEMO_IDENTIFIER_REDACTED]** :\n\n- **Statut** : pending\n- **Statut de fulfillment** : not_fulfilled\n- **Statut de paiement** : authorized\n\nLa commande est en attente et n'a pas encore été expédiée. Le paiement a été autorisé.",
         "latency_ms": 6067.547200014815,
         "selection_correct": true,
         "escalation": false
@@ -97,7 +97,7 @@
         ],
         "tool_calls": 1,
         "request_id": "7da7f97a4cb347afa377bf22a6cb6473",
-        "answer": "Confirmation explicite requise : prepare_cart (appr_d98d6d46a43a41eeb5140b3c1bfaeb53)",
+        "answer": "Confirmation explicite requise : prepare_cart ([DEMO_IDENTIFIER_REDACTED])",
         "latency_ms": 1536.9147000601515,
         "selection_correct": true,
         "escalation": false
@@ -110,7 +110,7 @@
         ],
         "tool_calls": 1,
         "request_id": "cc21e6d6330e4d60aaac307bd417d9a8",
-        "answer": "Confirmation explicite requise : complete_cart (appr_680fcb60362c492f85b777c69745fe4c)",
+        "answer": "Confirmation explicite requise : complete_cart ([DEMO_IDENTIFIER_REDACTED])",
         "latency_ms": 2568.6345000285655,
         "selection_correct": true,
         "escalation": false
@@ -123,13 +123,13 @@
         ],
         "tool_calls": 1,
         "request_id": "6e233091da724608b990e6c83c9e5848",
-        "answer": "✅ Ticket créé avec succès.\n\n- **Ticket ID** : `tic_3978bcb2c83041ae`\n- **Catégorie** : delivery\n- **Description** : demande de suivi de démonstration technique de la boutique locale\n- **Commande associée** : `order_01M76FXF3CQBMTZ81FGHD5N638`\n- **Statut** : open\n\nLe ticket a été enregistré dans notre base de données. Un agent traitera votre demande de suivi.",
+        "answer": "✅ Ticket créé avec succès.\n\n- **Ticket ID** : `tic_3978bcb2c83041ae`\n- **Catégorie** : delivery\n- **Description** : demande de suivi de démonstration technique de la boutique locale\n- **Commande associée** : `[DEMO_IDENTIFIER_REDACTED]`\n- **Statut** : open\n\nLe ticket a été enregistré dans notre base de données. Un agent traitera votre demande de suivi.",
         "latency_ms": 4346.292500034906,
         "selection_correct": true,
         "escalation": false
       }
     ],
-    "confirmed_cart_id": "cart_01M76FVHDYEGH0PJ12AB2D4DZB",
+    "confirmed_cart_id": "[DEMO_IDENTIFIER_REDACTED]",
     "repeat_confirmation_status": 409,
     "metrics": {
       "n_scenarios": 6,
@@ -139,7 +139,7 @@
     },
     "limitation": "Six guided development scenarios on generated test data. No independent test-set claim. Authorized return and token/cost metrics not evaluated.",
     "mlflow_run_id": "fea7d7c9b1914b7d9d72e39eec11de9b",
-    "agent_order_id": "order_01M76FXF3CQBMTZ81FGHD5N638",
+    "agent_order_id": "[DEMO_IDENTIFIER_REDACTED]",
     "agent_order_status": "pending",
     "ticket_persisted": true,
     "financial_payment": false,

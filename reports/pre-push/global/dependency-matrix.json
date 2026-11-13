@@ -1,0 +1,93 @@
+{
+  "python_distributions": 170,
+  "node_dependency_metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 1,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 1700,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 1700
+  },
+  "unique_advisories": [
+    {
+      "component": "chromadb",
+      "version": "1.5.9",
+      "id": "PYSEC-2026-311",
+      "aliases": [
+        "CVE-2026-45829",
+        "GHSA-f4j7-r4q5-qw2c"
+      ],
+      "fix_versions": [],
+      "url": "https://github.com/advisories/GHSA-f4j7-r4q5-qw2c",
+      "active_exposure": "Lexical active; no HTTP Chroma server/client in inspected app; optional embedded dense retained",
+      "status": "OPEN_UPSTREAM; current server preconditions absent; not suppressed"
+    },
+    {
+      "component": "chromadb",
+      "version": "1.5.9",
+      "id": "PYSEC-2026-3814",
+      "aliases": [
+        "GHSA-36p7-vc44-83pf",
+        "CVE-2026-45833"
+      ],
+      "fix_versions": [],
+      "url": "https://github.com/advisories/GHSA-36p7-vc44-83pf",
+      "active_exposure": "Lexical active; no HTTP Chroma server/client in inspected app; optional embedded dense retained",
+      "status": "OPEN_UPSTREAM; current server preconditions absent; not suppressed"
+    },
+    {
+      "component": "chromadb",
+      "version": "1.5.9",
+      "id": "PYSEC-2026-3815",
+      "aliases": [
+        "CVE-2026-45831",
+        "GHSA-xph7-9rjv-w5fr"
+      ],
+      "fix_versions": [],
+      "url": "https://github.com/advisories/GHSA-xph7-9rjv-w5fr",
+      "active_exposure": "Lexical active; no HTTP Chroma server/client in inspected app; optional embedded dense retained",
+      "status": "OPEN_UPSTREAM; current server preconditions absent; not suppressed"
+    },
+    {
+      "component": "chromadb",
+      "version": "1.5.9",
+      "id": "PYSEC-2026-3813",
+      "aliases": [
+        "CVE-2026-45830",
+        "GHSA-2wm9-hf6c-p5cr"
+      ],
+      "fix_versions": [],
+      "url": "https://github.com/advisories/GHSA-2wm9-hf6c-p5cr",
+      "active_exposure": "Lexical active; no HTTP Chroma server/client in inspected app; optional embedded dense retained",
+      "status": "OPEN_UPSTREAM; current server preconditions absent; not suppressed"
+    },
+    {
+      "component": "deepmerge",
+      "version": "4.3.1",
+      "id": "GHSA-gcqx-w48m-w2h4",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+      "fix_versions": [],
+      "active_exposure": "Actual production SendGrid transitive path uses deepmerge",
+      "mitigation": "Existing pnpm CommonJS/UMD __proto__ patch preserved; installed-path regression test PASS",
+      "status": "OPEN_UPSTREAM; LOCAL_MITIGATION_TESTED; not suppressed"
+    }
+  ],
+  "registry_versions": {
+    "chromadb": {
+      "latest": "1.5.9",
+      "source": "https://pypi.org/pypi/chromadb/json"
+    },
+    "deepmerge": {
+      "latest": "4.3.1",
+      "source": "https://registry.npmjs.org/deepmerge/latest"
+    }
+  },
+  "dependency_and_lock_updates_this_mission": false,
+  "security_test_count": 5
+}

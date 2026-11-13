@@ -1,0 +1,23 @@
+{
+  "pytest_local": {
+    "total": 267,
+    "failed": 0,
+    "duration_seconds": 79.392
+  },
+  "pytest_clean": {
+    "total": 267,
+    "failed": 0,
+    "duration_seconds": 65.649
+  },
+  "global_new_cases": 64,
+  "captured_new_cases": 61,
+  "live_scenarios": {
+    "PASS": 25
+  },
+  "medusa_security_tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "independent_final_evaluation": "PENDING",
+  "human_visual_inspection": "NOT_PERFORMED"
+}

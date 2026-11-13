@@ -1,0 +1,39 @@
+diff --git a/dist/cjs.js b/dist/cjs.js
+index 7c36cbdd06cc22c92d590be3f87a08a91ca06b40..f48c50bbaab048043268283f887598f30a6c86ab 100644
+--- a/dist/cjs.js	
++++ b/dist/cjs.js	
+@@ -84,7 +84,7 @@ function mergeObject(target, source, options) {
+ 		});
+ 	}
+ 	getKeys(source).forEach(function(key) {
+-		if (propertyIsUnsafe(target, key)) {
++		if (key === '__proto__' || propertyIsUnsafe(target, key)) {
+ 			return
+ 		}
+ 
+diff --git a/dist/umd.js b/dist/umd.js
+index 4071e7c56ec8e5273fe166f6e723ac460fab8b72..99da60e7884f9e73f211ce07e962be532283bce5 100644
+--- a/dist/umd.js	
++++ b/dist/umd.js	
+@@ -88,7 +88,7 @@
+ 			});
+ 		}
+ 		getKeys(source).forEach(function(key) {
+-			if (propertyIsUnsafe(target, key)) {
++			if (key === '__proto__' || propertyIsUnsafe(target, key)) {
+ 				return
+ 			}
+ 
+diff --git a/index.js b/index.js
+index 77968aed5d456cccc294f60912ef381fa1e52a7b..8c17140cf9e16e25d267aed79b5f0c0c91cebbfd 100644
+--- a/index.js	
++++ b/index.js	
+@@ -59,7 +59,7 @@ function mergeObject(target, source, options) {
+ 		})
+ 	}
+ 	getKeys(source).forEach(function(key) {
+-		if (propertyIsUnsafe(target, key)) {
++		if (key === '__proto__' || propertyIsUnsafe(target, key)) {
+ 			return
+ 		}
+ 

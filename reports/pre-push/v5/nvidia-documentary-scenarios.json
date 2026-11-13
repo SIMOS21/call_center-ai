@@ -1,0 +1,979 @@
+{
+  "model_configured": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "provider_host": "integrate.api.nvidia.com",
+  "existing_api_port": 8001,
+  "secret_files_modified": false,
+  "business_writes": 0,
+  "human_semantic_review": "PENDING",
+  "rows": [
+    {
+      "id": "NVIDIA-01",
+      "question": "J'ai reçu mon sweatshirt dans la mauvaise couleur. Comment puis-je le retourner ?",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "- Faire vérifier l'achat et les critères de retour du scénario, notamment le niveau d'adhésion.\n\n- Si le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.\n\n- ABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.\n\nNe communiquez pas votre adresse dans ce chat.\n\nÀ vérifier : Ces extraits ne confirment ni votre éligibilité dans notre boutique, ni les modes de retour qu'elle propose réellement.\n\nCes procédures ABCD ne sont pas les politiques officielles de Medusa ni de notre boutique. Elles n'autorisent aucune action sur votre compte.\n\nSource : [ABCD: Product Defect / Return Due to Color](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product%20Defect&subflow=Return%20Due%20to%20Color)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 1792,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "91c33756af4b197bfd133c8a",
+            "title": "ABCD: Product Defect / Return Due to Color",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+            "document_sha256": "8f76d419cbacd7bf6ed20c0682d322de7993fac636a98223640ab79c5c6273f3"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "purchase",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "quote": "Action: Validate Purchase",
+            "chunk_ids": [
+              "91c33756af4b197bfd133c8a"
+            ]
+          },
+          {
+            "id": "eligibility",
+            "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+            "quote": "Confirm their order can be returned, by checking their membership level.",
+            "chunk_ids": [
+              "07b4c175ed64b6e9711189ac"
+            ]
+          },
+          {
+            "id": "return_accepted",
+            "text": "La suite du scénario dépend de l'acceptation du retour.",
+            "quote": "If the customer can return, tell them the good news and go to the next step",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_label",
+            "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_modes",
+            "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+            "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+            "chunk_ids": [
+              "45906b7fa4c2fb24dff0f315"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Vérifier l'achat et l'éligibilité",
+            "text": "Faire vérifier l'achat et les critères de retour du scénario, notamment le niveau d'adhésion.",
+            "fact_ids": [
+              "purchase",
+              "eligibility"
+            ],
+            "evidence": [
+              {
+                "id": "purchase",
+                "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+                "quote": "Action: Validate Purchase",
+                "chunk_ids": [
+                  "91c33756af4b197bfd133c8a"
+                ]
+              },
+              {
+                "id": "eligibility",
+                "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+                "quote": "Confirm their order can be returned, by checking their membership level.",
+                "chunk_ids": [
+                  "07b4c175ed64b6e9711189ac"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Préparer l'étiquette après acceptation",
+            "text": "Si le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "fact_ids": [
+              "return_accepted",
+              "return_label"
+            ],
+            "evidence": [
+              {
+                "id": "return_accepted",
+                "text": "La suite du scénario dépend de l'acceptation du retour.",
+                "quote": "If the customer can return, tell them the good news and go to the next step",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              },
+              {
+                "id": "return_label",
+                "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+                "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Choisir un mode de retour cité",
+            "text": "ABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.",
+            "fact_ids": [
+              "return_modes"
+            ],
+            "evidence": [
+              {
+                "id": "return_modes",
+                "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+                "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+                "chunk_ids": [
+                  "45906b7fa4c2fb24dff0f315"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "standard",
+          "requested_steps": null,
+          "provided_steps": 3
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 646,
+          "completion_tokens": 15,
+          "total_tokens": 661
+        },
+        "ui_http_elapsed_ms": 2160.84,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-02",
+      "question": "Peux-tu résumer cette procédure en trois étapes ?",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "1. **Vérifier l'achat et l'éligibilité** — Faire vérifier l'achat et le niveau d'adhésion selon le scénario ABCD.\n\n2. **Préparer l'étiquette après acceptation** — Si le retour est accepté, préparer l'étiquette à imprimer avec l'adresse complète.\n\n3. **Choisir un mode de retour cité** — Choisir entre les modes cités par ABCD : envoi postal, magasin ou centre de dépôt.\n\nNe communiquez pas votre adresse dans ce chat.\n\nÀ vérifier : Ces extraits ne confirment ni votre éligibilité dans notre boutique, ni les modes de retour qu'elle propose réellement.\n\nCes procédures ABCD ne sont pas les politiques officielles de Medusa ni de notre boutique. Elles n'autorisent aucune action sur votre compte.\n\nSource : [ABCD: Product Defect / Return Due to Color](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product%20Defect&subflow=Return%20Due%20to%20Color)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 939,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "91c33756af4b197bfd133c8a",
+            "title": "ABCD: Product Defect / Return Due to Color",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+            "document_sha256": "8f76d419cbacd7bf6ed20c0682d322de7993fac636a98223640ab79c5c6273f3"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "purchase",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "quote": "Action: Validate Purchase",
+            "chunk_ids": [
+              "91c33756af4b197bfd133c8a"
+            ]
+          },
+          {
+            "id": "eligibility",
+            "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+            "quote": "Confirm their order can be returned, by checking their membership level.",
+            "chunk_ids": [
+              "07b4c175ed64b6e9711189ac"
+            ]
+          },
+          {
+            "id": "return_accepted",
+            "text": "La suite du scénario dépend de l'acceptation du retour.",
+            "quote": "If the customer can return, tell them the good news and go to the next step",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_label",
+            "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_modes",
+            "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+            "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+            "chunk_ids": [
+              "45906b7fa4c2fb24dff0f315"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Vérifier l'achat et l'éligibilité",
+            "text": "Faire vérifier l'achat et le niveau d'adhésion selon le scénario ABCD.",
+            "fact_ids": [
+              "purchase",
+              "eligibility"
+            ],
+            "evidence": [
+              {
+                "id": "purchase",
+                "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+                "quote": "Action: Validate Purchase",
+                "chunk_ids": [
+                  "91c33756af4b197bfd133c8a"
+                ]
+              },
+              {
+                "id": "eligibility",
+                "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+                "quote": "Confirm their order can be returned, by checking their membership level.",
+                "chunk_ids": [
+                  "07b4c175ed64b6e9711189ac"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Préparer l'étiquette après acceptation",
+            "text": "Si le retour est accepté, préparer l'étiquette à imprimer avec l'adresse complète.",
+            "fact_ids": [
+              "return_accepted",
+              "return_label"
+            ],
+            "evidence": [
+              {
+                "id": "return_accepted",
+                "text": "La suite du scénario dépend de l'acceptation du retour.",
+                "quote": "If the customer can return, tell them the good news and go to the next step",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              },
+              {
+                "id": "return_label",
+                "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+                "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Choisir un mode de retour cité",
+            "text": "Choisir entre les modes cités par ABCD : envoi postal, magasin ou centre de dépôt.",
+            "fact_ids": [
+              "return_modes"
+            ],
+            "evidence": [
+              {
+                "id": "return_modes",
+                "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+                "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+                "chunk_ids": [
+                  "45906b7fa4c2fb24dff0f315"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "steps",
+          "requested_steps": 3,
+          "provided_steps": 3
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 639,
+          "completion_tokens": 15,
+          "total_tokens": 654
+        },
+        "ui_http_elapsed_ms": 1346.59,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-03",
+      "question": "Une réponse courte pour cette procédure, s'il te plaît.",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "Vérifier l'achat et l'éligibilité décrite dans ABCD. Après acceptation, préparer l'étiquette et l'adresse. Modes ABCD : poste, magasin ou centre de dépôt.\n\nNe communiquez pas votre adresse dans ce chat.\n\nÀ vérifier : Éligibilité et modes réellement proposés par la boutique à vérifier.\n\nRéférence ABCD, pas les politiques officielles de Medusa ni de notre boutique.\n\nSource : [ABCD: Product Defect / Return Due to Color](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product%20Defect&subflow=Return%20Due%20to%20Color)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 1126,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "91c33756af4b197bfd133c8a",
+            "title": "ABCD: Product Defect / Return Due to Color",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+            "document_sha256": "8f76d419cbacd7bf6ed20c0682d322de7993fac636a98223640ab79c5c6273f3"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "purchase",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "quote": "Action: Validate Purchase",
+            "chunk_ids": [
+              "91c33756af4b197bfd133c8a"
+            ]
+          },
+          {
+            "id": "eligibility",
+            "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+            "quote": "Confirm their order can be returned, by checking their membership level.",
+            "chunk_ids": [
+              "07b4c175ed64b6e9711189ac"
+            ]
+          },
+          {
+            "id": "return_accepted",
+            "text": "La suite du scénario dépend de l'acceptation du retour.",
+            "quote": "If the customer can return, tell them the good news and go to the next step",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_label",
+            "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_modes",
+            "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+            "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+            "chunk_ids": [
+              "45906b7fa4c2fb24dff0f315"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Vérifier l'achat et l'éligibilité",
+            "text": "Vérifier l'achat et l'éligibilité décrite dans ABCD.",
+            "fact_ids": [
+              "purchase",
+              "eligibility"
+            ],
+            "evidence": [
+              {
+                "id": "purchase",
+                "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+                "quote": "Action: Validate Purchase",
+                "chunk_ids": [
+                  "91c33756af4b197bfd133c8a"
+                ]
+              },
+              {
+                "id": "eligibility",
+                "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+                "quote": "Confirm their order can be returned, by checking their membership level.",
+                "chunk_ids": [
+                  "07b4c175ed64b6e9711189ac"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Préparer l'étiquette après acceptation",
+            "text": "Après acceptation, préparer l'étiquette et l'adresse.",
+            "fact_ids": [
+              "return_accepted",
+              "return_label"
+            ],
+            "evidence": [
+              {
+                "id": "return_accepted",
+                "text": "La suite du scénario dépend de l'acceptation du retour.",
+                "quote": "If the customer can return, tell them the good news and go to the next step",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              },
+              {
+                "id": "return_label",
+                "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+                "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Choisir un mode de retour cité",
+            "text": "Modes ABCD : poste, magasin ou centre de dépôt.",
+            "fact_ids": [
+              "return_modes"
+            ],
+            "evidence": [
+              {
+                "id": "return_modes",
+                "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+                "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+                "chunk_ids": [
+                  "45906b7fa4c2fb24dff0f315"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "short",
+          "requested_steps": null,
+          "provided_steps": 3
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 638,
+          "completion_tokens": 15,
+          "total_tokens": 653
+        },
+        "ui_http_elapsed_ms": 1487.38,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-04",
+      "question": "Donne une explication détaillée de cette procédure.",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "**Vérifier l'achat**\n\nFaire vérifier l'achat concerné avant de poursuivre.\n\n**Examiner l'éligibilité**\n\nL'éligibilité y est vérifiée selon le niveau d'adhésion.\n\n**Préparer l'étiquette après acceptation**\n\nSi le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.\n\n**Choisir un mode de retour cité**\n\nABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.\n\n**Si le retour est refusé**\n\nSi le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.\n\nNe communiquez pas votre adresse dans ce chat.\n\nÀ vérifier : Ces extraits ne confirment ni votre éligibilité dans notre boutique, ni les modes de retour qu'elle propose réellement.\n\nCes procédures ABCD ne sont pas les politiques officielles de Medusa ni de notre boutique. Elles n'autorisent aucune action sur votre compte.\n\nSource : [ABCD: Product Defect / Return Due to Color](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product%20Defect&subflow=Return%20Due%20to%20Color)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 1092,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "91c33756af4b197bfd133c8a",
+            "title": "ABCD: Product Defect / Return Due to Color",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+            "document_sha256": "8f76d419cbacd7bf6ed20c0682d322de7993fac636a98223640ab79c5c6273f3"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "purchase",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "quote": "Action: Validate Purchase",
+            "chunk_ids": [
+              "91c33756af4b197bfd133c8a"
+            ]
+          },
+          {
+            "id": "eligibility",
+            "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+            "quote": "Confirm their order can be returned, by checking their membership level.",
+            "chunk_ids": [
+              "07b4c175ed64b6e9711189ac"
+            ]
+          },
+          {
+            "id": "return_accepted",
+            "text": "La suite du scénario dépend de l'acceptation du retour.",
+            "quote": "If the customer can return, tell them the good news and go to the next step",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_label",
+            "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          },
+          {
+            "id": "return_modes",
+            "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+            "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+            "chunk_ids": [
+              "45906b7fa4c2fb24dff0f315"
+            ]
+          },
+          {
+            "id": "return_refused",
+            "text": "Si le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.",
+            "quote": "If the customer cannot return, apologize and explain the problem. Then [End Conversation]",
+            "chunk_ids": [
+              "c5b37a3703cbf756e034abc1"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Vérifier l'achat",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "fact_ids": [
+              "purchase"
+            ],
+            "evidence": [
+              {
+                "id": "purchase",
+                "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+                "quote": "Action: Validate Purchase",
+                "chunk_ids": [
+                  "91c33756af4b197bfd133c8a"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Examiner l'éligibilité",
+            "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+            "fact_ids": [
+              "eligibility"
+            ],
+            "evidence": [
+              {
+                "id": "eligibility",
+                "text": "L'éligibilité y est vérifiée selon le niveau d'adhésion.",
+                "quote": "Confirm their order can be returned, by checking their membership level.",
+                "chunk_ids": [
+                  "07b4c175ed64b6e9711189ac"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Préparer l'étiquette après acceptation",
+            "text": "Si le retour est accepté, le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+            "fact_ids": [
+              "return_accepted",
+              "return_label"
+            ],
+            "evidence": [
+              {
+                "id": "return_accepted",
+                "text": "La suite du scénario dépend de l'acceptation du retour.",
+                "quote": "If the customer can return, tell them the good news and go to the next step",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              },
+              {
+                "id": "return_label",
+                "text": "Le scénario prévoit une étiquette de retour à imprimer et l'adresse complète pour la préparer.",
+                "quote": "Since the customer will print out a shipping label for the return, you need their full address.",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Choisir un mode de retour cité",
+            "text": "ABCD cite trois modes : l'envoi postal, le retour en magasin ou le dépôt en centre.",
+            "fact_ids": [
+              "return_modes"
+            ],
+            "evidence": [
+              {
+                "id": "return_modes",
+                "text": "Les modes cités dans ABCD sont l'envoi postal, le retour en magasin et le dépôt en centre.",
+                "quote": "Options include: 'By Mail', 'In Store', or 'Drop off Center'",
+                "chunk_ids": [
+                  "45906b7fa4c2fb24dff0f315"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Si le retour est refusé",
+            "text": "Si le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.",
+            "fact_ids": [
+              "return_refused"
+            ],
+            "evidence": [
+              {
+                "id": "return_refused",
+                "text": "Si le retour est refusé, le scénario prévoit d'expliquer le problème puis de clore l'échange.",
+                "quote": "If the customer cannot return, apologize and explain the problem. Then [End Conversation]",
+                "chunk_ids": [
+                  "c5b37a3703cbf756e034abc1"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "detailed",
+          "requested_steps": null,
+          "provided_steps": 5
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 636,
+          "completion_tokens": 36,
+          "total_tokens": 672
+        },
+        "ui_http_elapsed_ms": 1428.29,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-05",
+      "question": "Mon colis est arrivé mais un article manque. Comment signaler ce problème ?",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "- La procédure commence par identifier le compte concerné.\n\n- Faire vérifier l'achat concerné avant de poursuivre.\n\n- Préciser depuis combien de temps le colis est attendu.\n\nCette référence traite aussi des colis indiqués livrés mais encore en transit. Elle ne décrit pas précisément le cas d'un colis reçu incomplet et ne justifie aucun remboursement partiel automatique.\n\nCes procédures ABCD ne sont pas les politiques officielles de Medusa ni de notre boutique. Elles n'autorisent aucune action sur votre compte.\n\nSource : [ABCD: Shipping Issue / Missing Item](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping%20Issue&subflow=Missing%20Item)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 1328,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "309b17f897f16e651705b038",
+            "title": "ABCD: Shipping Issue / Missing Item",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item",
+            "document_sha256": "90ed44723a987e84354f5eb91db048b04422a807c76139cfe039b91b854875de"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "account",
+            "text": "La procédure commence par identifier le compte concerné.",
+            "quote": "Action: Pull up Account",
+            "chunk_ids": [
+              "309b17f897f16e651705b038"
+            ]
+          },
+          {
+            "id": "purchase",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "quote": "Action: Validate Purchase",
+            "chunk_ids": [
+              "309b17f897f16e651705b038"
+            ]
+          },
+          {
+            "id": "reason",
+            "text": "Préciser depuis combien de temps le colis est attendu.",
+            "quote": "Ask how long they have been waiting",
+            "chunk_ids": [
+              "4e8d01beaf9ad85fc69bc44d"
+            ]
+          },
+          {
+            "id": "scope",
+            "text": "Cette référence traite aussi des colis indiqués livrés mais encore en transit. Elle ne décrit pas précisément le cas d'un colis reçu incomplet et ne justifie aucun remboursement partiel automatique.",
+            "quote": "sometimes the package is mistakenly marked as delivered",
+            "chunk_ids": [
+              "4e8d01beaf9ad85fc69bc44d"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Identifier le compte",
+            "text": "La procédure commence par identifier le compte concerné.",
+            "fact_ids": [
+              "account"
+            ],
+            "evidence": [
+              {
+                "id": "account",
+                "text": "La procédure commence par identifier le compte concerné.",
+                "quote": "Action: Pull up Account",
+                "chunk_ids": [
+                  "309b17f897f16e651705b038"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Vérifier l'achat",
+            "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+            "fact_ids": [
+              "purchase"
+            ],
+            "evidence": [
+              {
+                "id": "purchase",
+                "text": "Faire vérifier l'achat concerné avant de poursuivre.",
+                "quote": "Action: Validate Purchase",
+                "chunk_ids": [
+                  "309b17f897f16e651705b038"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Préciser le temps d'attente",
+            "text": "Préciser depuis combien de temps le colis est attendu.",
+            "fact_ids": [
+              "reason"
+            ],
+            "evidence": [
+              {
+                "id": "reason",
+                "text": "Préciser depuis combien de temps le colis est attendu.",
+                "quote": "Ask how long they have been waiting",
+                "chunk_ids": [
+                  "4e8d01beaf9ad85fc69bc44d"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "standard",
+          "requested_steps": null,
+          "provided_steps": 3
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 402,
+          "completion_tokens": 14,
+          "total_tokens": 416
+        },
+        "ui_http_elapsed_ms": 1664.53,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-06",
+      "question": "Ma carte bancaire est refusée lorsque je veux payer. Quelles vérifications sont documentées ?",
+      "expected": "NVIDIA verified fact selection, source-bound claims and requested format",
+      "observed": {
+        "answer": "- Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.\n\n- Se déconnecter du compte puis se reconnecter avant de réessayer.\n\n- Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.\n\nLe scénario contient aussi une collecte de données bancaires qui n'est pas applicable ici. Ne partagez ni numéro de carte ni CVV. Ce chat ne confirme aucun paiement financier réel.\n\nCes procédures ABCD ne sont pas les politiques officielles de Medusa ni de notre boutique. Elles n'autorisent aucune action sur votre compte.\n\nSource : [ABCD: Troubleshoot Site / Invalid Credit Card](https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot%20Site&subflow=Invalid%20Credit%20Card)",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 1058,
+        "generation": "nvidia_verified_fact_selection",
+        "sources": [
+          {
+            "id": "e077488f9f320e47912a64b2",
+            "title": "ABCD: Troubleshoot Site / Invalid Credit Card",
+            "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Invalid Credit Card",
+            "document_sha256": "c2fcaadc390cbbc67779c84486e647b1a097f049c389c98ab73dd4529802c8fd"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "retry",
+            "text": "Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.",
+            "quote": "Instruct the customer to try entering their credit card information again",
+            "chunk_ids": [
+              "e077488f9f320e47912a64b2"
+            ]
+          },
+          {
+            "id": "reconnect",
+            "text": "Se déconnecter du compte puis se reconnecter avant de réessayer.",
+            "quote": "Instruct the customer to log out of their account and log back in.",
+            "chunk_ids": [
+              "93c9eeba69aa29d449e7c3be"
+            ]
+          },
+          {
+            "id": "expiry",
+            "text": "Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.",
+            "quote": "Have the customer check the expiration date",
+            "chunk_ids": [
+              "93c9eeba69aa29d449e7c3be"
+            ]
+          },
+          {
+            "id": "bank_safety",
+            "text": "Le scénario contient aussi une collecte de données bancaires qui n'est pas applicable ici. Ne partagez ni numéro de carte ni CVV. Ce chat ne confirme aucun paiement financier réel.",
+            "quote": "Start by asking for the customer’s credit card number",
+            "chunk_ids": [
+              "c532cc11c178ecad0659f5b6"
+            ]
+          }
+        ],
+        "answer_units": [
+          {
+            "title": "Réessayer la saisie",
+            "text": "Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.",
+            "fact_ids": [
+              "retry"
+            ],
+            "evidence": [
+              {
+                "id": "retry",
+                "text": "Réessayer la saisie sur la page de paiement, sans communiquer les données de la carte dans le chat.",
+                "quote": "Instruct the customer to try entering their credit card information again",
+                "chunk_ids": [
+                  "e077488f9f320e47912a64b2"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Se reconnecter",
+            "text": "Se déconnecter du compte puis se reconnecter avant de réessayer.",
+            "fact_ids": [
+              "reconnect"
+            ],
+            "evidence": [
+              {
+                "id": "reconnect",
+                "text": "Se déconnecter du compte puis se reconnecter avant de réessayer.",
+                "quote": "Instruct the customer to log out of their account and log back in.",
+                "chunk_ids": [
+                  "93c9eeba69aa29d449e7c3be"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Vérifier la validité de la carte",
+            "text": "Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.",
+            "fact_ids": [
+              "expiry"
+            ],
+            "evidence": [
+              {
+                "id": "expiry",
+                "text": "Vérifier soi-même que la carte n'est pas expirée, sans indiquer sa date ici.",
+                "quote": "Have the customer check the expiration date",
+                "chunk_ids": [
+                  "93c9eeba69aa29d449e7c3be"
+                ]
+              }
+            ]
+          }
+        ],
+        "presentation_format": {
+          "mode": "standard",
+          "requested_steps": null,
+          "provided_steps": 3
+        },
+        "selection_diagnostic": {},
+        "usage": {
+          "prompt_tokens": 451,
+          "completion_tokens": 18,
+          "total_tokens": 469
+        },
+        "ui_http_elapsed_ms": 1417.49,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-07",
+      "question": "Votre boutique garantit-elle officiellement tous les appareils électroniques pendant 36 mois ?",
+      "expected": "Source lookup and abstention without provider inference",
+      "observed": {
+        "answer": "Je ne dispose pas d'une source pertinente et applicable permettant de confirmer cette procédure ou cette politique de boutique. Je préfère ne pas inventer de conditions. Vous pouvez préciser la référence recherchée ou demander l'aide d'un conseiller.",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 78,
+        "generation": "documentary_abstention",
+        "sources": [],
+        "evidence": [],
+        "answer_units": [],
+        "presentation_format": {
+          "mode": "standard",
+          "requested_steps": null,
+          "provided_steps": 0
+        },
+        "selection_diagnostic": {},
+        "usage": null,
+        "ui_http_elapsed_ms": 408.71,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    },
+    {
+      "id": "NVIDIA-08",
+      "question": "Quelle politique officielle garantit vos satellites de jardin cinquante ans ?",
+      "expected": "Source lookup and abstention without provider inference",
+      "observed": {
+        "answer": "Je ne dispose pas d'une source pertinente et applicable permettant de confirmer cette procédure ou cette politique de boutique. Je préfère ne pas inventer de conditions. Vous pouvez préciser la référence recherchée ou demander l'aide d'un conseiller.",
+        "used_tools": [
+          "search_knowledge"
+        ],
+        "latency_ms": 64,
+        "generation": "documentary_abstention",
+        "sources": [],
+        "evidence": [],
+        "answer_units": [],
+        "presentation_format": {
+          "mode": "standard",
+          "requested_steps": null,
+          "provided_steps": 0
+        },
+        "selection_diagnostic": {},
+        "usage": null,
+        "ui_http_elapsed_ms": 547.97,
+        "exact_original_excerpt_checks": true,
+        "claim_dependencies_present": true,
+        "default_ui_json_elements": 0
+      },
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "status": "PASS",
+      "mode": "real_AppTest_HTTP_NVIDIA"
+    }
+  ]
+}

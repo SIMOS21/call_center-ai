@@ -1,0 +1,30 @@
+[
+  {
+    "title": "ABCD: Shipping Issue / Missing Item",
+    "category": "abcd",
+    "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Shipping Issue&subflow=Missing Item",
+    "source_type": "MIT_test_excerpts",
+    "text": "Action: Pull up Account\nAction: Validate Purchase\nAsk how long they have been waiting\nsometimes the package is mistakenly marked as delivered"
+  },
+  {
+    "title": "ABCD: Troubleshoot Site / Invalid Credit Card",
+    "category": "abcd",
+    "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Troubleshoot Site&subflow=Invalid Credit Card",
+    "source_type": "MIT_test_excerpts",
+    "text": "Instruct the customer to try entering their credit card information again\nInstruct the customer to log out of their account and log back in.\nHave the customer check the expiration date\nStart by asking for the customer’s credit card number"
+  },
+  {
+    "title": "ABCD: Account Access / Recover Username",
+    "category": "abcd",
+    "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Account Access&subflow=Recover Username",
+    "source_type": "MIT_test_excerpts",
+    "text": "Action: Pull up Account\nAction: Verify Identity\nYou make up their username"
+  },
+  {
+    "title": "ABCD: Product Defect / Return Due to Color",
+    "category": "abcd",
+    "source": "https://raw.githubusercontent.com/asappresearch/abcd/master/data/guidelines.json#flow=Product Defect&subflow=Return Due to Color",
+    "source_type": "MIT_test_excerpts",
+    "text": "Action: Pull up Account\nAction: Validate Purchase\nConfirm their order can be returned, by checking their membership level.\nIf the customer can return, tell them the good news and go to the next step\nSince the customer will print out a shipping label for the return, you need their full address.\nOptions include: 'By Mail', 'In Store', or 'Drop off Center'\nIf the customer cannot return, apologize and explain the problem. Then [End Conversation]"
+  }
+]

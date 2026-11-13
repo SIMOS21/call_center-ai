@@ -30,3 +30,19 @@ export async function ensureCartOwner(req: AuthenticatedMedusaRequest, res: Medu
   next()
 }
 
+export async function ensureCustomerCartOwner(req: AuthenticatedMedusaRequest, res: MedusaResponse, next: MedusaNextFunction) {
+  const query = req.scope.resolve(ContainerRegistrationKeys.QUERY)
+  const { data: [cart] } = await query.graph({ entity: "cart", fields: ["id", "customer_id"], filters: { id: req.params.id } })
+  if (!cart) {
+    res.status(404).json({ message: "Cart not found" })
+    return
+  }
+  // Anonymous storefront carts retain their existing flow. Once a customer
+  // owns a cart, reads and line mutations require that authenticated identity.
+  if (cart.customer_id && cart.customer_id !== req.auth_context?.actor_id) {
+    res.status(403).json({ message: "Cart access denied" })
+    return
+  }
+  next()
+}
+

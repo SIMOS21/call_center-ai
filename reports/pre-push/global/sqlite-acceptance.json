@@ -1,0 +1,24 @@
+{
+  "approvals": [
+    {
+      "kind": "prepare_cart_items",
+      "status": "done",
+      "matches_session_owner": true
+    },
+    {
+      "kind": "prepare_cart_items",
+      "status": "done",
+      "matches_session_owner": true
+    },
+    {
+      "kind": "prepare_cart_items",
+      "status": "cancelled",
+      "matches_session_owner": true
+    }
+  ],
+  "confirmed_results_link_same_cart": true,
+  "session_cart_links_after_reset": 0,
+  "cart_locks_after_done": 0,
+  "draft_and_history_empty_after_reset": true,
+  "status": "PASS"
+}

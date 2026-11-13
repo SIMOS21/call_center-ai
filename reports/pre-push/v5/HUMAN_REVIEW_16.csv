@@ -1,0 +1,17 @@
+case_number,case_sha256,reviewer,review_date,response_reference,relevance_0_4,faithfulness_0_4,citations_0_4,tools_0_4,parameters_0_4,confirmations_0_4,security_escalation_0_4,latency_ms,critical_failure,notes,status
+1,a9913f58230e9f239325d9ce64e6c98b98aea530585adc176c397f7808a4faaf,,,,,,,,,,,,,,PENDING
+2,5d97f7feaae2279cd550cf8e74171e88225c4262028c50a8a8118856119f6981,,,,,,,,,,,,,,PENDING
+3,345668b99ca0746035d976d736c3749945d05886739fcbcfca314a210c80e830,,,,,,,,,,,,,,PENDING
+4,efbe47a5ca2e1d1da3bb32d84fb941edd14267bea3025e1a63d7d89b944930f6,,,,,,,,,,,,,,PENDING
+5,e05c472c6ef614e79c749cae6cf367c58c33fb5cc11d595f4f352725c6a8b2eb,,,,,,,,,,,,,,PENDING
+6,9990db888adf283f59ba53c60dd188cb80413c9f85476ef712ab3f32035f1996,,,,,,,,,,,,,,PENDING
+7,6c24b24ad32afe420cdac7646baf4219d2157909be635d10e8377a4f034d8e5f,,,,,,,,,,,,,,PENDING
+8,28c6d80402a305f34602ea3abfd56ed2a7bdcedd70f2d47cd1436448770da756,,,,,,,,,,,,,,PENDING
+9,ff415132f3987ece21921af0a6159b003f4156747dde6c59468875749dbfbdb9,,,,,,,,,,,,,,PENDING
+10,f99ae7596955dcac724afcc97101190015de65caeaa5bbd4ae0b64de43c48c14,,,,,,,,,,,,,,PENDING
+11,574be8ee8b21b478725ccfdb2b604db17da889cdb49edc2d96b1df37a57a3b73,,,,,,,,,,,,,,PENDING
+12,ea425932b0431647f5ba9be65c3d4d54cb2a8343525adc828238c7d1c625a79c,,,,,,,,,,,,,,PENDING
+13,5ffde8b4e1f48a56ac9e3c1e231c8917e1538e46b544aa4e335e313fde26418a,,,,,,,,,,,,,,PENDING
+14,638e7e16e374c46bdbbde4e6b76406d02da72b58167028d870c8c994d5756a1a,,,,,,,,,,,,,,PENDING
+15,afeea1f89f105b1dffb20a9e2a885a4d8a418a48ebf6b4d83882ccae7aa436c2,,,,,,,,,,,,,,PENDING
+16,2b0d6e5b6ddee9d94827d74f728a3e9257409dd72e611ab07a89a26da00003a1,,,,,,,,,,,,,,PENDING

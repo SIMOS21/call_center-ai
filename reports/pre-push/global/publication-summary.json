@@ -1,0 +1,18 @@
+{
+  "commerceops_ai": {
+    "selected": 140,
+    "index_differs": 81,
+    "staged_outside_selection": 53,
+    "candidate_secret_findings": 0,
+    "staged_secret_findings": 0,
+    "history_rules": []
+  },
+  "my-medusa-store": {
+    "selected": 309,
+    "index_differs": 14,
+    "staged_outside_selection": 0,
+    "candidate_secret_findings": 0,
+    "staged_secret_findings": 0,
+    "history_rules": []
+  }
+}

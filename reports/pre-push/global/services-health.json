@@ -1,0 +1,26 @@
+{
+  "api": {
+    "http_status": 200,
+    "reachable": true
+  },
+  "streamlit": {
+    "http_status": 200,
+    "reachable": true
+  },
+  "medusa": {
+    "http_status": 200,
+    "reachable": true
+  },
+  "mlflow": {
+    "http_status": 200,
+    "reachable": true
+  },
+  "postgresql": {
+    "tcp_reachable": true,
+    "port": 5433
+  },
+  "redis": {
+    "tcp_reachable": true,
+    "port": 6380
+  }
+}

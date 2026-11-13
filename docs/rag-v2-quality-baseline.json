@@ -1,0 +1,17 @@
+{
+  "justification": "Development-only nonregression against the separately measured legacy lexical baseline on the same 12 already-consulted questions and two negative probes. No final-set claim; not a production accuracy threshold.",
+  "checks": {
+    "development.recall_at_5": {
+      "baseline": 0.6666666666666666,
+      "max_drop": 0
+    },
+    "development.negative_abstention_rate": {
+      "baseline": 1.0,
+      "max_drop": 0
+    },
+    "development.n": {
+      "baseline": 12,
+      "max_drop": 0
+    }
+  }
+}

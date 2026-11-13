@@ -1,5 +1,11 @@
 # Reproductibilité — exécution du 11 novembre 2026
 
+## Mise à jour V2 du 12 novembre 2026
+
+L'état actuel et les commandes reproductibles se trouvent dans [RAG_AND_CART_FIXES](RAG_AND_CART_FIXES.md). Le manifeste `reports/source_manifest.json` décrit désormais l'index effectivement sélectionné par INDEX_FILE, les SHA applicatifs, le lecteur documentaire et le hash du final non exécuté. L'index de 55 documents/217 passages n'a pas été détruit ; les baselines restent disponibles. Les valeurs historiques ci-dessous relatent les premières exécutions et sont remplacées par le statut V2 pour la livraison courante.
+
+104 tests passent sous Python 3.14 local ; profil Ruff CI et gates exécutés. Pour le contexte Windows où Temp est refusé, utiliser un répertoire unique sous `data/runtime` avec `--basetemp` et un cache ignoré. Relance des conteneurs existants via compose, puis services existants, sans seed ni migration. La nouvelle interface utilise `COMMERCEOPS_API_URL` et le lecteur documentaire est désactivable par `RAG_DOCUMENT_GROUPING=false` ; ces valeurs non secrètes figurent dans `.env.example`. Les secrets restent exclusivement locaux.
+
 ## Environnement observé
 Windows PowerShell ; Python 3.14.3 (seule version présente), Node 24.13.0, Git 2.52.0.windows.1, Docker Engine 29.0.1, Compose 2.40.3, pnpm Medusa 10.11.1. Python 3.12 reste la version de CI ; l’environnement local 3.14 a passé les tests mais le lock Windows ne doit pas être utilisé sur Linux. Versions exactes : requirements-windows-py314.lock.txt. Les contraintes d’origine sont conservées dans requirements.txt. Aucun package Python global modifié.
 

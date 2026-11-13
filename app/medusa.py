@@ -9,6 +9,15 @@ class BackendError(Exception):
     pass
 
 
+class BusinessOutcomeUnknown(BackendError):
+    """A write was attempted. Reconcile by reading, never repeat it automatically."""
+    def __init__(self, stage, cart_id=None):
+        super().__init__("État métier à vérifier auprès de la boutique. Ne renouvelez pas cette écriture.")
+        self.result = {"status": "needs_review", "stage": stage, "cart_creation_confirmed": bool(cart_id)}
+        if cart_id:
+            self.result["cart_id"] = cart_id
+
+
 class Medusa:
     def __init__(self, transport=None):
         self.base = env("MEDUSA_URL", "http://localhost:9000").rstrip("/")
@@ -44,8 +53,28 @@ class Medusa:
         except BackendError:
             return False
 
-    def products(self, query: str = "", limit: int = 10) -> dict:
-        return self._request("GET", "/store/products", params={"q": query, "limit": min(limit, 20)})
+    def products(self, query: str = "", limit: int = 20, product_id: str | None = None, offset: int = 0) -> dict:
+        params = {"q": query, "limit": min(limit, 20), "offset": offset, "fields": "*variants,*variants.options,+variants.calculated_price,*type,*categories"}
+        if self.region:
+            params["region_id"] = self.region
+        if product_id:
+            params["id"] = product_id
+        return self._request("GET", "/store/products", params=params)
+
+    def catalogue(self):
+        products, identities = [], set()
+        while True:
+            response = self.products("", offset=len(products)) if products else self.products("")
+            batch = response.get("products", [])
+            if not isinstance(batch, list) or any(not isinstance(product, dict) or not product.get("id") for product in batch):
+                raise BackendError("Réponse catalogue invalide.")
+            incoming = {product["id"] for product in batch}
+            if len(incoming) != len(batch) or identities.intersection(incoming):
+                raise BackendError("La pagination du catalogue a changé. Réessayez sa consultation.")
+            products.extend(batch)
+            identities.update(incoming)
+            if len(batch) < 20 or (type(response.get("count")) is int and len(products) >= response["count"]):
+                return {"products": products}
 
     def customer(self, token: str) -> dict:
         if not token:
@@ -77,12 +106,96 @@ class Medusa:
             raise BackendError("MEDUSA_REGION_ID est requis.")
         if quantity < 1 or quantity > 20:
             raise BackendError("Quantité invalide (1 à 20).")
-        result = self._request("POST", "/store/carts", token=token,
-                               json={"region_id": self.region})
-        cart_id = result["cart"]["id"]
-        updated = self._request("POST", f"/store/carts/{cart_id}/line-items", token=token,
-                                json={"variant_id": variant_id, "quantity": quantity})
+        try:
+            result = self._request("POST", "/store/carts", token=token,
+                                   json={"region_id": self.region})
+            cart_id = result["cart"]["id"]
+        except (BackendError, KeyError, TypeError):
+            raise BusinessOutcomeUnknown("cart_creation") from None
+        try:
+            updated = self._request("POST", f"/store/carts/{cart_id}/line-items", token=token,
+                                    json={"variant_id": variant_id, "quantity": quantity})
+            cart = updated.get("cart") or {}
+            if cart.get("id") != cart_id or not any(i.get("variant_id") == variant_id and i.get("quantity") == quantity for i in cart.get("items", [])):
+                raise BackendError("Ajout d'article non confirmé par la réponse métier.")
+        except BackendError:
+            # A lost response may hide a successful insertion. Only read to reconcile.
+            try:
+                cart = self.owned_cart(cart_id, token)
+                items = cart.get("items", [])
+                if len(items) == 1 and items[0].get("variant_id") == variant_id and items[0].get("quantity") == quantity:
+                    return {"cart_id": cart_id, "cart": cart, "checkout_status": "shipping_payment_required", "reconciled_by_read": True}
+            except BackendError:
+                pass
+            raise BusinessOutcomeUnknown("line_item", cart_id) from None
         return {"cart_id": cart_id, "cart": updated.get("cart"), "checkout_status": "shipping_payment_required"}
+
+    def apply_cart_items(self, items, token, cart_id=None):
+        """Execute an approved batch once; reconcile lost replies by reads only."""
+        self.customer(token)
+        if not items or len(items) > 20 or any(type(item.get("quantity")) is not int
+                or not 1 <= item["quantity"] <= 20 or item.get("operation", "add") not in ("add", "set", "remove") for item in items):
+            raise BackendError("Articles ou quantités de panier invalides.")
+        variants = [item["variant_id"] for item in items]
+        if len(variants) != len(set(variants)):
+            raise BackendError("Regroupez les variantes identiques avant confirmation.")
+        created_cart = not cart_id
+        if not cart_id:
+            if not self.region or any(item.get("operation", "add") != "add" for item in items):
+                raise BackendError("Une région et des ajouts sont requis pour créer un panier.")
+            try:
+                created = self._request("POST", "/store/carts", token=token, json={"region_id": self.region})
+                cart_id = created["cart"]["id"]
+            except (BackendError, KeyError, TypeError):
+                raise BusinessOutcomeUnknown("cart_creation") from None
+        try:
+            cart = self.get_cart(cart_id, token)
+            expected = self._cart_quantities(cart)
+            for index, item in enumerate(items):
+                variant_id = item["variant_id"]
+                operation = item.get("operation", "add")
+                existing = next((line for line in cart["items"] if line.get("variant_id") == variant_id), None)
+                before = expected.get(variant_id, 0)
+                target = before + item["quantity"] if operation == "add" else item["quantity"]
+                if operation == "remove":
+                    target = 0
+                if not 0 <= target <= 20 or (operation != "add" and not existing):
+                    raise BackendError("Ligne ou quantité résultante non autorisée.")
+                expected[variant_id] = target
+                if target == 0:
+                    expected.pop(variant_id)
+                route = f"/store/carts/{cart_id}/line-items"
+                method, body = "POST", {"variant_id": variant_id, "quantity": target}
+                if existing:
+                    if not existing.get("id"):
+                        raise BackendError("Référence de ligne non confirmée.")
+                    route += "/" + existing["id"]
+                    body = {"quantity": target}
+                if operation == "remove":
+                    method, body = "DELETE", None
+                try:
+                    self._request(method, route, token=token, **({"json": body} if body else {}))
+                except BackendError:
+                    # The server may have committed the write. Do not issue it again.
+                    pass
+                cart = self.get_cart(cart_id, token)
+                if self._cart_quantities(cart) != expected:
+                    raise BusinessOutcomeUnknown("line_item_" + str(index + 1), cart_id)
+            return {"cart_id": cart_id, "cart": cart, "checkout_status": "shipping_payment_required", "cart_created": created_cart}
+        except BusinessOutcomeUnknown:
+            raise
+        except BackendError:
+            raise BusinessOutcomeUnknown("cart_items", cart_id) from None
+
+    @staticmethod
+    def _cart_quantities(cart):
+        items = cart.get("items", [])
+        if not isinstance(items, list) or any(not isinstance(item, dict) or type(item.get("quantity")) is not int or item["quantity"] < 1 for item in items):
+            raise BackendError("Réponse panier invalide. Vérification humaine requise.")
+        identities = [item.get("variant_id") for item in items]
+        if len(set(identities)) != len(identities) or any(not identity for identity in identities):
+            raise BackendError("Lignes de panier ambiguës. Vérification humaine requise.")
+        return {item["variant_id"]: item["quantity"] for item in items}
 
     def complete_cart(self, cart_id: str, token: str) -> dict:
         self.owned_cart(cart_id, token)
@@ -102,6 +215,18 @@ class Medusa:
         if cart.get("customer_id") != customer_id:
             raise BackendError("Accès refusé : panier non associé au client connecté.")
         return cart
+
+    def get_cart(self, cart_id: str, token: str) -> dict:
+        """Read-only, owner checked; no contact data or metadata leaves the gateway."""
+        cart = self.owned_cart(cart_id, token)
+        if not cart.get("id"):
+            raise BackendError("Panier absent ou inaccessible.")
+        result = {k: cart[k] for k in ("id", "currency_code", "subtotal", "total", "tax_total", "shipping_total", "completed_at") if k in cart}
+        result["cart_id"] = cart["id"]
+        result["status"] = ("completed" if cart["completed_at"] else "open") if "completed_at" in cart else "unknown"
+        result["items"] = [{k: item[k] for k in ("id", "product_title", "title", "variant_title", "variant_id", "quantity", "unit_price", "subtotal", "total") if k in item} for item in cart.get("items", [])]
+        result["availability"] = "not_checked"
+        return result
 
     def validate_return(self, order_id: str, items: list[dict], token: str) -> dict:
         order = self.order(order_id, token)

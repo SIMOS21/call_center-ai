@@ -1,0 +1,51 @@
+{
+  "name": "dtc-starter-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "backend:seed": "turbo seed --filter=@dtc/backend",
+    "backend:dev": "turbo dev --filter=@dtc/backend",
+    "storefront:dev": "turbo dev --filter=@dtc/storefront"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.0.5",
+      "@types/react-dom": "19.0.5",
+      "tsconfig-paths": "^4.2.0",
+      "ajv@>=8 <8.18.0": "8.18.0",
+      "qs@>=6 <6.16.1": "6.16.1",
+      "js-yaml@>=3 <3.15.2": "3.15.2",
+      "js-yaml@>=4 <4.3.2": "4.3.2",
+      "fast-uri@>=3 <3.1.9": "3.1.9",
+      "brace-expansion@>=1 <1.1.21": "1.1.21",
+      "@grpc/grpc-js@>=1.14.0 <1.14.5": "1.14.5",
+      "source-map-js@>=1 <1.2.2": "1.2.2",
+      "proxy-addr@>=2 <2.0.8": "2.0.8",
+      "follow-redirects@>=1 <1.16.2": "1.16.2",
+      "body-parser@>=1 <1.20.9": "1.20.9",
+      "postcss-selector-parser@>=6 <6.1.5": "6.1.5",
+      "bullmq@5.13.0>uuid": "11.1.1",
+      "minimatch@>=10 <11": "11.0.1"
+    },
+    "patchedDependencies": {
+      "deepmerge@4.3.1": "patches/deepmerge@4.3.1.patch"
+    }
+  },
+  "devDependencies": {
+    "@medusajs/eslint-plugin": "2.22.6",
+    "eslint": "^9.39.4",
+    "jiti": "^2.7.0",
+    "prettier": "^3.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "turbo": "^2.0.14"
+  }
+}

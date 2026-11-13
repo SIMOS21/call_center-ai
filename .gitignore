@@ -22,6 +22,18 @@ data/hf-cache/
 reports/final-audit/clean-source/
 reports/final-audit/release/
 data/evaluation/manual_gold.jsonl
+data/rag-v2/
+data/runtime/
 reports/final-audit/pdf-contact-sheet.png
 reports/final-audit/pdf-page10.png
 reports/final-audit/implementation-status-before.md
+
+# Private independent evaluation and local publication artifacts
+evaluation/final-*.jsonl
+evaluation/final-*.review.json
+CommerceOps_AI_AUDIT_SOURCE.zip
+reports/pre-push/publish/
+evaluation/final_cases.jsonl
+evaluation/manual_gold.review.json
+reports/**/*.log
+reports/**/*.xml
